@@ -25,7 +25,7 @@
     
     <script>
         // Initializes the map container (lat, long, zoom)
-        const mymap = L.map('mapid').setView([0, 0], 1);
+        const mymap = L.map('mapid').setView([35, -80], 5);
 
         // Define the tile laer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -37,7 +37,7 @@
       L.control.scale().addTo(mymap);
 
       // show a marker on the map
-      L.marker({lon: 0, lat: 0}).bindPopup('The center of the world').addTo(mymap);
+      L.marker({lon: -80, lat: 35}).bindPopup('North Carolina').addTo(mymap);
     
     </script>
 </body>
