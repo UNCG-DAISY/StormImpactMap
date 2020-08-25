@@ -1,11 +1,18 @@
 from flask import Flask, render_template
 import fetch_data
+import json
 
 app = Flask(__name__)
 
+images = fetch_data.get_img_data()
+
+test_dict = {
+    'key':'value'
+}
+
 @app.route("/")
 def testFunction():
-    return render_template("index.html")
+    return render_template("index.html", test=test_dict)
 
 @app.route("/about")
 def renderAbout():
@@ -13,7 +20,7 @@ def renderAbout():
 
 @app.route("/data")
 def renderImgData():
-    return fetch_data.get_img_data()
+    return images
 
 
 if __name__ == '__main__':

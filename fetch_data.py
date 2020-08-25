@@ -4,9 +4,8 @@ images = {
     'images':[]
     }
 
-
 def get_img_data():
-    return_str = ""
+
     with open('HurricaneMichaelSampleData.csv') as file:
         reader = csv.reader(file)
         file.readline()
@@ -16,6 +15,5 @@ def get_img_data():
             new_img['lat'] = row[1]
             new_img['wash'] = row[2]
             images['images'].append(new_img)
-
 
     return images
