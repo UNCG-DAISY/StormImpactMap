@@ -10,28 +10,23 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
-    <style>
-        html, body, #mapid {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
     <h1>Map</h1>
     <div id="mapid"></div>
-    
+   
     <script>
         // Initializes the map container (lat, long, zoom)
-        const mymap = L.map('mapid').setView([35, -80], 5);
+        const mymap = L.map('mapid').setView([35, -80], 8);
 
-        // Define the tile laer
+        // Define the tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
       }).addTo(mymap);
+
+      L.tileLayer('https://storms.ngs.noaa.gov/storms/tilesm/services/tileserver.php/20200803a-rgb/{z}/{x}/{y}.png').addTo(mymap);
 
       // show the scale bar on the lower left corner
       L.control.scale().addTo(mymap);
@@ -43,8 +38,9 @@
     //   const test = '{{test|tojson|safe}}'
     //   console.log(test);
 
-
     
     </script>
+
+
 </body>
 </html>
