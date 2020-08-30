@@ -17,15 +17,7 @@
 <body>
 
     <div id='map'></div>
-    <script>
-
-        const csv_data = String(fetch("HurricaneMichaelSampleData.csv")
-        .then(response => response.text())
-        .then(text => {
-        //Use CSV text
-
-        }));
-
+    <script>      
 
         L.mapbox.accessToken ='pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g';
         const center = L.latLng(35, -75.69);
@@ -72,6 +64,25 @@
 
         const layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(map);
 
+        let csv_data = "";
+        fetch("HurricaneMichaelSampleData.csv")
+        .then(response => response.text())
+        .then(text => {
+        //Use CSV text
+        console.log(text);
+        csv_data = text;
+        markers = csv_data.split("\n");
+        markers.shift();
+        console.log(markers.length);
+
+        markers.forEach(element => {
+            vals = element.split(",");
+            let lat = vals[0];
+            let lon = vals[1];
+            let wash = vals[2];
+            const marker = L.marker([lat,lon]).addTo(map);
+        });
+        });
 
     </script>
 </body>
