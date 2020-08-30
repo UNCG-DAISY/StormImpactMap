@@ -6,6 +6,10 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+
+    <!-- not needed if using own iconCreateFunction -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
 
     <style>
         body { margin:0; padding:0; }
@@ -21,7 +25,7 @@
 
         L.mapbox.accessToken ='pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g';
         const center = L.latLng(35, -75.69);
-        const initZoom = 8;
+        const initZoom = 6;
         const map = L.mapbox.map('map').setView(center, initZoom);
 
         //Mapbox baselayers styled in Studio
@@ -75,15 +79,26 @@
         markers.shift();
         console.log(markers.length);
 
+        let markerGroup = L.markerClusterGroup();
         markers.forEach(element => {
             vals = element.split(",");
             let lat = vals[0];
             let lon = vals[1];
             let wash = vals[2];
-            const marker = L.marker([lat,lon]).addTo(map);
-        });
+            
+            const marker = L.marker([lat,lon]);
+            markerGroup.addLayer(marker);
         });
 
+        map.addLayer(markerGroup);
+
+        
+        
+        });
+
+
+        
     </script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 </body>
 </html>
