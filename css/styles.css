@@ -5,3 +5,15 @@ header {
     z-index: 1;
     padding-left: 50px;
 }
+
+body { 
+    margin:0; 
+    padding:0; 
+}
+
+#map { 
+    position:absolute; 
+    top: 25px; 
+    bottom:0; 
+    width:100%; 
+}
