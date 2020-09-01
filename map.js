@@ -70,7 +70,7 @@
 
 
         let csv_data = "";
-        fetch("HurricaneIsaiasSampleData.csv")
+        fetch("HurricaneMichaelSampleData.csv")
         .then(response => response.text())
         .then(text => {
         //Use CSV text
