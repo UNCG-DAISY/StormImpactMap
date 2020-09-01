@@ -4,6 +4,10 @@ header {
     width: 100%;
     z-index: 1;
     padding-left: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    
 }
 
 body { 
@@ -16,4 +20,8 @@ body {
     top: 25px; 
     bottom:0; 
     width:100%; 
+}
+
+#title {
+    display: inline;
 }
