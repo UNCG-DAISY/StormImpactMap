@@ -1,4 +1,4 @@
-header {
+/* header {
     position: absolute;
     background-color: white;
     width: 100%;
@@ -7,21 +7,18 @@ header {
     height: 40px;
     display: flex;
     align-items: center;
-    
-}
+
+} */
 
 body { 
     margin:0; 
     padding:0; 
 }
 
+
 #map { 
     position:absolute; 
-    top: 25px; 
+    top: 50px; 
     bottom:0; 
     width:100%; 
-}
-
-#title {
-    display: inline;
 }
