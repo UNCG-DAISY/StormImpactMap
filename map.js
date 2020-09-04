@@ -136,28 +136,28 @@
         });        
 
 
-        let csv_data = "";
-        fetch("HurricaneMichaelSampleData.csv")
-        .then(response => response.text())
-        .then(text => {
-        //Use CSV text
-        console.log(text);
-        csv_data = text;
-        markers = csv_data.split("\n");
-        markers.shift();
-        console.log(markers.length);
+        // let csv_data = "";
+        // fetch("HurricaneMichaelSampleData.csv")
+        // .then(response => response.text())
+        // .then(text => {
+        // //Use CSV text
+        // console.log(text);
+        // csv_data = text;
+        // markers = csv_data.split("\n");
+        // markers.shift();
+        // console.log(markers.length);
 
-        let markerGroup = L.markerClusterGroup();
-        markers.forEach(element => {
-            vals = element.split(",");
-            let lat = vals[0];
-            let lon = vals[1];
-            let wash = vals[2];
+        // let markerGroup = L.markerClusterGroup();
+        // markers.forEach(element => {
+        //     vals = element.split(",");
+        //     let lat = vals[0];
+        //     let lon = vals[1];
+        //     let wash = vals[2];
             
             
-            const marker = L.marker([lat,lon], {icon: (wash == 1 ? greenIcon : redIcon)});
-            markerGroup.addLayer(marker);
-        });
+        //     const marker = L.marker([lat,lon], {icon: (wash == 1 ? greenIcon : redIcon)});
+        //     markerGroup.addLayer(marker);
+        // });
 
-        map.addLayer(markerGroup);
-        });
+        // map.addLayer(markerGroup);
+        // });
