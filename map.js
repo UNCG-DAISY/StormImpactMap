@@ -7,7 +7,11 @@
         //Mapbox baselayers styled in Studio
         // var mbStreet = new L.mapbox.styleLayer('mapbox://styles/jasonwool/cj7dbfjif0q8e2sqeli6sqsku').addTo(map);
         // var mbSat = new L.mapbox.styleLayer('mapbox://styles/jasonwool/ciobrxtg7005sainhniz3f5hx');
-        L.mapbox.tileLayer('mapbox.streets').addTo(map);
+        // L.mapbox.tileLayer('mapbox.streets').addTo(map);
+
+        // Stamen basemaps (terrain, toner, watercolor)
+        const toner_lite = new L.StamenTileLayer("watercolor");
+        map.addLayer(toner_lite);
 
 
         map.addControl(L.mapbox.geocoderControl('mapbox.places', {
