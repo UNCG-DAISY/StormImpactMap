@@ -38,8 +38,16 @@ header {
     margin: 6px 0;
   }
 
+.menu-items {
+    list-style-type: none;
+}
+
 .menu-item {
-    padding-left: 10px;
+    margin-left: 25px;
+}
+
+.menu-item:hover{
+    background-color: yellow;
 }
 
 #title {
