@@ -73,8 +73,7 @@
             if (collapsed) {
                 $("#sidenav").css("width", "200"); 
                 $("#sidenav").css("transition", "width 1s"); 
-                $(".menu-title").show();
-                $('.menu-title').css("display", "inline");
+                setTimeout(() => {$('.menu-title').css("display", "inline")}, 500);
                 collapsed = false;
                 hidden = false
             }
