@@ -32,11 +32,11 @@
 
             <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
                 <div class="menu-item">
-                    <i class="fas fa-question"></i><span class="menu-title">About</span>
+                    <i class="fas fa-question"></i><div class="menu-title">About</div>
                 </div>
 
                 <div class="menu-item">
-                    <i class="fas fa-envelope"></i><span class="menu-title">Contact</span>
+                    <i class="fas fa-envelope"></i><div class="menu-title">Contact</div>
                 </div>
                 
             <!-- </div> -->
@@ -71,8 +71,10 @@
         $("#menu-icon").click(function() {
             console.log("clicked");
             if (collapsed) {
-                $("#sidenav").css("width", "220"); 
+                $("#sidenav").css("width", "200"); 
+                $("#sidenav").css("transition", "width 1s"); 
                 $(".menu-title").show();
+                $('.menu-title').css("display", "inline");
                 collapsed = false;
                 hidden = false
             }
