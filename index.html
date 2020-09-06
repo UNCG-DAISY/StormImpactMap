@@ -31,7 +31,7 @@
             </div>
 
             <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
-                <div class="menu-item">
+                <div class="menu-item" data-toggle="modal" data-target="#about-modal">
                     <i class="fas fa-question"></i><div class="menu-title">About</div>
                 </div>
 
@@ -66,23 +66,21 @@
     <div id='map'></div>
 
     <script>
-        let collapsed = true,
-            hidden = true
+        let collapsed = true
         $("#menu-icon").click(function() {
-            console.log("clicked");
-            if (collapsed) {
-                $("#sidenav").css("width", "200"); 
-                $("#sidenav").css("transition", "width 1s"); 
-                setTimeout(() => {$('.menu-title').css("display", "inline")}, 500);
-                collapsed = false;
-                hidden = false
-            }
-            else {
-                $("#sidenav").css("width","60"); 
-                $(".menu-title").hide();
-                collapsed = true;
-                hideen = true; 
-            }
+        console.log("clicked");
+        if (collapsed) {
+            $("#sidenav").css("width", "200"); 
+            $("#sidenav").css("transition", "width 1s"); 
+            collapsed = false;
+            setTimeout(() => {$('.menu-title').css("display", "inline")}, 250);
+            
+        }
+        else {
+            $("#sidenav").css("width","60"); 
+            $(".menu-title").hide();
+            collapsed = true;
+        }
         });
     </script>
     <script src="../map.js"></script>            

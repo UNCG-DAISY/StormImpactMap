@@ -33,6 +33,7 @@ header {
 
 i {
     padding-right: 20px;
+    width: 40px;
 }
 .menu-icon {
     width: 35px;
@@ -46,7 +47,8 @@ i {
   }
 
   .menu-title {
-      display: none;     
+      display: none;    
+      padding: auto; 
   }
 
 .menu-item:hover{
