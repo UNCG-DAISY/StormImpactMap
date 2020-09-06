@@ -49,7 +49,7 @@ i {
       display: none;
   }
 .menu-item:hover{
-    background-color: yellow;
+    background-color: rgb(2, 2, 58);
 }
 
 #title {
