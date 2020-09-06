@@ -7,7 +7,7 @@
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
-    <link rel="stylesheet" href="sidenav.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
@@ -32,11 +32,11 @@
 
             <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
                 <div class="menu-item">
-                    <i class="fas fa-question"></i><span>About</span>
+                    <i class="fas fa-question"></i><span class="menu-title">About</span>
                 </div>
 
                 <div class="menu-item">
-                    <i class="fas fa-question"></i><span>Contact</span>
+                    <i class="fas fa-question"></i><span class="menu-title">Contact</span>
                 </div>
                 
             <!-- </div> -->
@@ -65,20 +65,25 @@
 
     <div id='map'></div>
 
-    <!-- <script>
-        let collapsed = true
+    <script>
+        let collapsed = true,
+            hidden = true
         $("#menu-icon").click(function() {
             console.log("clicked");
             if (collapsed) {
                 $("#sidenav").css("width", "220"); 
+                $(".menu-title").show();
                 collapsed = false;
+                hidden = false
             }
             else {
-                $("#sidenav").css("width", "50"); 
+                $("#sidenav").css("width","60"); 
+                $(".menu-title").hide();
                 collapsed = true;
+                hideen = true; 
             }
         });
-    </script> -->
+    </script>
     <script src="../map.js"></script>            
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
