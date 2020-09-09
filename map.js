@@ -12,7 +12,7 @@
         const satellite = L.mapbox.tileLayer('mapbox.satellite');
 
         // Stamen basemaps (terrain, toner, watercolor)
-        const toner = new L.StamenTileLayer("toner");
+        const toner = new L.StamenTileLayer("toner-lite");
         const watercolor = new L.StamenTileLayer("watercolor");
         const terrain = new L.StamenTileLayer("terrain");
         map.addLayer(toner);
