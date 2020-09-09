@@ -7,7 +7,10 @@
         //Mapbox baselayers styled in Studio
         // var mbStreet = new L.mapbox.styleLayer('mapbox://styles/jasonwool/cj7dbfjif0q8e2sqeli6sqsku').addTo(map);
         // var mbSat = new L.mapbox.styleLayer('mapbox://styles/jasonwool/ciobrxtg7005sainhniz3f5hx');
-        // L.mapbox.tileLayer('mapbox.streets').addTo(map);
+
+        //Mapbox layers
+        const streets = L.mapbox.tileLayer('mapbox.streets');
+        const satellite = L.mapbox.tileLayer('mapbox.satellite');
 
         // Stamen basemaps (terrain, toner, watercolor)
         const toner = new L.StamenTileLayer("toner");
@@ -96,9 +99,9 @@
        const baseLayers = {
             "Toner": toner,
             "Watercolor": watercolor,
-            "Terrain": terrain
-        // "MapBox Streets": mbStreet,
-        // "MapBox Satellite": mbSat
+            "Terrain": terrain,
+            "MapBox Streets": streets,
+            "MapBox Satellite": satellite
         };
 
         const overlayLayers = {
