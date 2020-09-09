@@ -1,4 +1,3 @@
-
         L.mapbox.accessToken ='pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g';
         const center = L.latLng(35, -75.69);
         const initZoom = 6;
