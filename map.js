@@ -188,11 +188,8 @@ const sept22b = new L.mapbox.tileLayer(
     ///////////////////////////////////////////////////////// SHAPEFILES
 */
 
-// shp("data/shapefiles/Michael_2018.zip").then(function (geojson) {
-//   L.geoJson(geojson).addTo(map);
-// });
-
-map.addLayer(new L.Shapefile("data/shapefiles/Florence_2018.zip"));
+const florence_pred = new L.Shapefile("data/shapefiles/Florence_2018.zip");
+const micahel_pred = new L.Shapefile("data/shapefiles/MIchael_2018.zip");
 
 //overlay layers
 
@@ -235,8 +232,6 @@ const baseLayers = {
   "Toner-lite": toner_lite,
   Watercolor: watercolor,
   Terrain: terrain,
-  // "MapBox Streets": streets,
-  // "MapBox Satellite": satellite
 };
 
 const overlayLayers = {
@@ -244,7 +239,8 @@ const overlayLayers = {
   Dorian: dorian,
   Michael: michael,
   Isaias: isaias,
-  // "Mapbox Labels": mbLabels
+  "Michael Prediction": micahel_pred,
+  "Florence Prediction": florence_pred,
 };
 
 const layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(
