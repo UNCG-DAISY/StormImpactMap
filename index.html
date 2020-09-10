@@ -1,100 +1,125 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset=utf-8 />
+  <head>
+    <meta charset="utf-8" />
     <title>Storm Impact Map</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
 
     <!-- not needed if using own iconCreateFunction -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+    />
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-    
-    
+  <body>
+    <div id="sidenav">
+      <div id="menu-icon">
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+      </div>
 
-</head>
+      <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
+      <div class="menu-item" data-toggle="modal" data-target="#about-modal">
+        <i class="fas fa-question"></i>
+        <div class="menu-title">About</div>
+      </div>
 
-<body>
-        <div id="sidenav">
+      <div class="menu-item">
+        <i class="fas fa-envelope"></i>
+        <div class="menu-title">Contact</div>
+      </div>
 
-            <div id="menu-icon">
-                <div class="menu-icon"></div>
-                <div class="menu-icon"></div>
-                <div class="menu-icon"></div>
-            </div>
-
-            <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
-                <div class="menu-item" data-toggle="modal" data-target="#about-modal">
-                    <i class="fas fa-question"></i><div class="menu-title">About</div>
-                </div>
-
-                <div class="menu-item">
-                    <i class="fas fa-envelope"></i><div class="menu-title">Contact</div>
-                </div>
-                
-            <!-- </div> -->
-
-        </div>
+      <!-- </div> -->
+    </div>
 
     <header>
-        <h3 id="title">Storm Impact Map</h3>
-
+      <h3 id="title">Storm Impact Map</h3>
     </header>
 
     <div id="about-modal" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title">
-                        here is the title
-                     </div>
-                </div>
-                <div class="modal-body">
-                    here is the body
-                </div>
-            </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title">here is the title</div>
+          </div>
+          <div class="modal-body">here is the body</div>
         </div>
+      </div>
     </div>
 
-    <div id='map'></div>
+    <div id="map"></div>
 
     <script>
-        let collapsed = true
-        $("#menu-icon").click(function() {
+      let collapsed = true;
+      $("#menu-icon").click(function () {
         console.log("clicked");
         if (collapsed) {
-            $("#sidenav").css("width", "200"); 
-            $("#sidenav").css("transition", "width 1s"); 
-            collapsed = false;
-            setTimeout(() => {$('.menu-title').css("display", "inline")}, 250);
-            
+          $("#sidenav").css("width", "200");
+          $("#sidenav").css("transition", "width 1s");
+          collapsed = false;
+          setTimeout(() => {
+            $(".menu-title").css("display", "inline");
+          }, 250);
+        } else {
+          $("#sidenav").css("width", "60");
+          $(".menu-title").hide();
+          collapsed = true;
         }
-        else {
-            $("#sidenav").css("width","60"); 
-            $(".menu-title").hide();
-            collapsed = true;
-        }
-        });
+      });
     </script>
     <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
-    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-    <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script>
-
+    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+    <script
+      type="text/javascript"
+      src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"
+    ></script>
     <script type="text/javascript" src="js/shp.js"></script>
-    <script type="text/javascript" src="js/catiline.js"></script>    
+    <!-- <script type="text/javascript" src="js/catiline.js"></script> -->
     <script type="text/javascript" src="js/leaflet.shpfile.js"></script>
 
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="map.js"></script>            
-
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="map.js"></script>
+  </body>
 </html>

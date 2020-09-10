@@ -184,9 +184,15 @@ const sept22b = new L.mapbox.tileLayer(
   { errorTileUrl: "../florence/images/clear.png" }
 );
 
-shp("compress.zip").then(function (geojson) {
-  L.geoJson(geojson).addTo(map);
-});
+/*
+    ///////////////////////////////////////////////////////// SHAPEFILES
+*/
+
+// shp("data/shapefiles/Michael_2018.zip").then(function (geojson) {
+//   L.geoJson(geojson).addTo(map);
+// });
+
+map.addLayer(new L.Shapefile("data/shapefiles/Florence_2018.zip"));
 
 //overlay layers
 
@@ -241,7 +247,9 @@ const overlayLayers = {
   // "Mapbox Labels": mbLabels
 };
 
-// const layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(map);
+const layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(
+  map
+);
 
 /*
         //////////////////////////////////////////////////////////////////////////////////////
