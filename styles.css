@@ -1,73 +1,71 @@
 header {
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    z-index: 1;
-    padding-left: 50px;
-    height: 40px;
-    display: flex;
-    align-items: center;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: 1;
+  padding-left: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
 }
 
 #sidenav {
-    height: 100vh;
-    width: 60px;
-    background-color: darkblue;
-    z-index: 5;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    color: white;
+  height: 100vh;
+  width: 60px;
+  background-color: darkblue;
+  z-index: 5;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
 }
 
 #menu-icon {
-    display: block;
-    width: 35px;
-    background-color: darkblue;
-    position: fixed;
-    top: 20px;
-    left: 10px;
+  display: block;
+  width: 35px;
+  background-color: darkblue;
+  position: fixed;
+  top: 20px;
+  left: 10px;
 }
 
 i {
-    padding-right: 20px;
-    width: 40px;
+  padding-right: 20px;
+  width: 40px;
 }
 .menu-icon {
-    width: 35px;
-    height: 5px;
-    background-color: white;
-    margin: 6px 0;
-  }
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
 
-  .menu-item {
-    padding: 10px 0 10px 25px;
-  }
+.menu-item {
+  padding: 10px 0 10px 25px;
+}
 
-  .menu-title {
-      display: none;    
-      padding: auto; 
-  }
+.menu-title {
+  display: none;
+  padding: auto;
+}
 
-.menu-item:hover{
-    background-color: rgb(2, 2, 58);
+.menu-item:hover {
+  background-color: rgb(2, 2, 58);
 }
 
 #title {
-    text-align: center;
+  text-align: center;
 }
 
-body { 
-    margin:0; 
-    padding:0; 
+body {
+  margin: 0;
+  padding: 0;
 }
 
-
-#map { 
-    position:absolute; 
-    top: 50px; 
-    bottom:0; 
-    width:100%; 
+#map {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  width: 100%;
 }

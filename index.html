@@ -56,7 +56,7 @@
         <div class="menu-title">About</div>
       </div>
 
-      <div class="menu-item">
+      <div class="menu-item" data-toggle="modal" data-target="#contact-modal">
         <i class="fas fa-envelope"></i>
         <div class="menu-title">Contact</div>
       </div>
@@ -69,12 +69,39 @@
     </header>
 
     <div id="about-modal" class="modal">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <div class="modal-title">here is the title</div>
+            <div class="modal-title">About</div>
           </div>
-          <div class="modal-body">here is the body</div>
+          <div class="modal-body">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact-modal" class="modal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title">Contact us</div>
+          </div>
+          <div class="modal-body">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </div>
         </div>
       </div>
     </div>
@@ -87,7 +114,7 @@
         console.log("clicked");
         if (collapsed) {
           $("#sidenav").css("width", "200");
-          $("#sidenav").css("transition", "width 1s");
+          $("#sidenav").css("transition", "width .5s");
           collapsed = false;
           setTimeout(() => {
             $(".menu-title").css("display", "inline");
