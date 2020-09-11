@@ -306,12 +306,9 @@ function getSampleData(url, order) {
   fetch(url)
     .then((response) => response.text())
     .then((text) => {
-      //Use CSV text
-      // console.log(text);
       csv_data = text;
       markers = csv_data.split("\n");
       markers.shift();
-      // console.log(markers.length);
 
       let markerGroup = L.markerClusterGroup();
       markers.forEach((element) => {
