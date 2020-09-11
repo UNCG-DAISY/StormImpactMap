@@ -115,13 +115,14 @@
         if (collapsed) {
           $("#sidenav").css("width", "200");
           $("#sidenav").css("transition", "width .5s");
-          collapsed = false;
           setTimeout(() => {
-            $(".menu-title").css("display", "inline");
-          }, 250);
+            $(".menu-title").removeClass("hidden");
+            collapsed = false;
+          }, 500);
         } else {
           $("#sidenav").css("width", "60");
-          $(".menu-title").hide();
+          $(".menu-title").addClass("hidden");
+          // $(".menu-title").hide();
           collapsed = true;
         }
       });
