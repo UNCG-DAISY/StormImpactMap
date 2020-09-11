@@ -1,16 +1,3 @@
-function include(file) {
-  var script = document.createElement("script");
-  script.src = file;
-  script.type = "text/javascript";
-  script.defer = true;
-
-  document.getElementsByTagName("head").item(0).appendChild(script);
-}
-
-/* Include Many js files */
-include("");
-include("");
-
 L.mapbox.accessToken =
   "pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g";
 const center = L.latLng(35, -75.69);
@@ -82,7 +69,6 @@ function getSampleData(url, order) {
       if (order == 1) {
         overlayLayers["Isaias CSV"] = markerGroup;
         getSampleData("data/HurricaneMichaelSampleData.csv");
-        console.log("next");
       } else {
         overlayLayers["Michael CSV"] = markerGroup;
         const layersControl = new L.Control.Layers(
