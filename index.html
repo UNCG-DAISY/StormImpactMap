@@ -94,13 +94,19 @@
             <div class="modal-title">Contact us</div>
           </div>
           <div class="modal-body">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
+            <img src="images/goldstein-237x300.jpg" alt="godstein" /><br />
+            Research Scientist <br />
+            Contact: ebgoldst@uncg.edu <br />
+            Website <br />
+            Twitter <br />
+            GitHub <br /><br />
+
+            <img src="images/valentine237x263.png" alt="godstein" /><br />
+            Software Developer <br />
+            Contact: jamisont.valentine@gmail.com <br />
+            Website <br />
+            Twitter <br />
+            GitHub
           </div>
         </div>
       </div>
@@ -116,13 +122,12 @@
           $("#sidenav").css("width", "200");
           $("#sidenav").css("transition", "width .5s");
           setTimeout(() => {
-            $(".menu-title").removeClass("hidden");
+            $(".menu-title").css("display", "inline");
             collapsed = false;
           }, 500);
         } else {
           $("#sidenav").css("width", "60");
-          $(".menu-title").addClass("hidden");
-          // $(".menu-title").hide();
+          $(".menu-title").css("display", "none");
           collapsed = true;
         }
       });
