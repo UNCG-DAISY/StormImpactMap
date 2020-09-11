@@ -332,7 +332,6 @@ function getSampleData(url, order) {
         console.log("next");
       } else {
         overlayLayers["Michael CSV"] = markerGroup;
-        alert("done");
         const layersControl = new L.Control.Layers(
           baseLayers,
           overlayLayers
