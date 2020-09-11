@@ -271,10 +271,6 @@ const overlayLayers = {
   "Florence Overwash": florence_wash,
 };
 
-const layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(
-  map
-);
-
 /*
         //////////////////////////////////////////////////////////////////////////////////////
             ADDING MARKERS TO THE MAP
@@ -303,32 +299,47 @@ const redIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-let csv_data = "";
-fetch("data/HurricaneMichaelSampleData.csv")
-  .then((response) => response.text())
-  .then((text) => {
-    //Use CSV text
-    // console.log(text);
-    csv_data = text;
-    markers = csv_data.split("\n");
-    markers.shift();
-    // console.log(markers.length);
+getSampleData("data/HurricaneIsaiasSampleData.csv", 1);
 
-    let markerGroup = L.markerClusterGroup();
-    markers.forEach((element) => {
-      vals = element.split(",");
-      let lat = vals[0];
-      let lon = vals[1];
-      let wash = vals[2];
+function getSampleData(url, order) {
+  let csv_data = "";
+  fetch(url)
+    .then((response) => response.text())
+    .then((text) => {
+      //Use CSV text
+      // console.log(text);
+      csv_data = text;
+      markers = csv_data.split("\n");
+      markers.shift();
+      // console.log(markers.length);
 
-      if (wash > 0.5) {
-        const marker = L.marker([lat, lon], {
-          icon: wash == 1 ? greenIcon : redIcon,
-        });
+      let markerGroup = L.markerClusterGroup();
+      markers.forEach((element) => {
+        vals = element.split(",");
+        let lat = vals[0];
+        let lon = vals[1];
+        let wash = vals[2];
 
-        markerGroup.addLayer(marker);
+        if (wash > 0.5) {
+          const marker = L.marker([lat, lon], {
+            icon: wash == 1 ? greenIcon : redIcon,
+          });
+
+          markerGroup.addLayer(marker);
+        }
+      });
+
+      if (order == 1) {
+        overlayLayers["Isaias CSV"] = markerGroup;
+        getSampleData("data/HurricaneMichaelSampleData.csv");
+        console.log("next");
+      } else {
+        overlayLayers["Michael CSV"] = markerGroup;
+        alert("done");
+        const layersControl = new L.Control.Layers(
+          baseLayers,
+          overlayLayers
+        ).addTo(map);
       }
     });
-
-    map.addLayer(markerGroup);
-  });
+}
