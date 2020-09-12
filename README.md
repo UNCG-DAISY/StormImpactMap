@@ -20,7 +20,7 @@
 
 ## Data Sources
 
-- [NOAA tiles](https://storms.ngs.noaa.gov/)
-- [USGS predictions](https://coastal.er.usgs.gov/data-release/doi-P9Z362BC/)
-- [USGS observations](https://coastal.er.usgs.gov/data-release/doi-P9BW6CG6/)
-- ML observations
+- [NOAA Emergency Response Imagery tiles](https://storms.ngs.noaa.gov/)
+- [USGS overwash predictions](https://coastal.er.usgs.gov/data-release/doi-P9Z362BC/)
+- [USGS overwash observations](https://coastal.er.usgs.gov/data-release/doi-P9BW6CG6/)
+- [ML observations of washover](https://github.com/UNCG-DAISY/WashoverML)
