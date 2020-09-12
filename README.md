@@ -16,7 +16,7 @@
 ## Contributors
 
 - Jamison Valentine - Lead Software Developer
-- Evan Goldstein - Project Lead
+- Evan Goldstein - Lead Scientist
 
 ## Data Sources
 
