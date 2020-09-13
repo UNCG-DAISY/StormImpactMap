@@ -41,6 +41,12 @@ const overlayLayers = {
 
 getSampleData("data/HurricaneIsaiasSampleData.csv", 1);
 
+let popupContent = document.createElement("div");
+popupContent.innerText = `Image name:
+archive info: `;
+popupContent.class = "popup";
+popupContent.style.backgroundColor = "lightblue";
+
 function getSampleData(url, order) {
   let csv_data = "";
   fetch(url)
@@ -60,7 +66,7 @@ function getSampleData(url, order) {
         if (wash > 0.5) {
           const marker = L.marker([lat, lon], {
             icon: wash == 1 ? greenIcon : redIcon,
-          });
+          }).bindPopup(popupContent);
 
           markerGroup.addLayer(marker);
         }
