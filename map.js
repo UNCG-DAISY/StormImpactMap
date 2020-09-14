@@ -77,11 +77,10 @@ function getSampleData(url, order) {
           lat +
           "\n Longitude: " +
           lon;
-        popupContent.class = "popup";
 
         if (wash_pred > 0.5) {
           const marker = L.marker([lat, lon], {
-            icon: wash_pred == 1 ? greenIcon : redIcon,
+            icon: wash_pred > 0.75 ? greenIcon : redIcon,
           }).bindPopup(popupContent);
 
           markerGroup.addLayer(marker);
@@ -90,13 +89,18 @@ function getSampleData(url, order) {
 
       if (order == 1) {
         overlayLayers["Isaias CSV"] = markerGroup;
-        getSampleData("data/HurricaneMichaelSampleData.csv");
+        getSampleData("data/HurricaneFlorenceSampleData.csv", 2);
+      } else if (order == 2) {
+        overlayLayers["Florence CSV"] = markerGroup;
+        getSampleData("data/HurricaneMichaelSampleData.csv", 3);
       } else {
         overlayLayers["Michael CSV"] = markerGroup;
         const layersControl = new L.Control.Layers(
           baseLayers,
           overlayLayers
         ).addTo(map);
+        console.log(overlayLayers["Isaias CSV"]);
+        console.log(overlayLayers["Michael CSV"]);
       }
     });
 }
