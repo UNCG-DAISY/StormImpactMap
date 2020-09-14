@@ -41,12 +41,6 @@ const overlayLayers = {
 
 getSampleData("data/HurricaneIsaiasSampleData.csv", 1);
 
-let popupContent = document.createElement("div");
-popupContent.innerText = `Image name:
-archive info: `;
-popupContent.class = "popup";
-popupContent.style.backgroundColor = "lightblue";
-
 function getSampleData(url, order) {
   let csv_data = "";
   fetch(url)
@@ -59,13 +53,35 @@ function getSampleData(url, order) {
       let markerGroup = L.markerClusterGroup();
       markers.forEach((element) => {
         vals = element.split(",");
-        let lat = vals[0];
-        let lon = vals[1];
-        let wash = vals[2];
+        let storm_id = vals[0];
+        let archive = vals[1];
+        let image = vals[2];
+        let date = vals[3];
+        let wash_pred = vals[4];
+        let lat = vals[5];
+        let lon = vals[6];
 
-        if (wash > 0.5) {
+        let popupContent = document.createElement("div");
+        popupContent.innerText =
+          "Storm ID: " +
+          storm_id +
+          "\n Archive: " +
+          archive +
+          "\n Image: " +
+          image +
+          "\n Data: " +
+          date +
+          "\n Prediction: " +
+          wash_pred +
+          "\n Latitude: " +
+          lat +
+          "\n Longitude: " +
+          lon;
+        popupContent.class = "popup";
+
+        if (wash_pred > 0.5) {
           const marker = L.marker([lat, lon], {
-            icon: wash == 1 ? greenIcon : redIcon,
+            icon: wash_pred == 1 ? greenIcon : redIcon,
           }).bindPopup(popupContent);
 
           markerGroup.addLayer(marker);
