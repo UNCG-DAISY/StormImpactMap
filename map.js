@@ -2,7 +2,7 @@ L.mapbox.accessToken =
   "pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g";
 const center = L.latLng(35, -75.69);
 const initZoom = 6;
-const map = L.mapbox.map("map").setView(center, initZoom);
+const map = L.map("map").setView(center, initZoom);
 
 // Stamen basemaps (terrain, toner-lite, watercolor)
 const toner_lite = new L.tileLayer(
@@ -16,11 +16,11 @@ const terrain = new L.tileLayer(
 );
 map.addLayer(toner_lite);
 
-// map.addControl(
-//   L.control.zoom({
-//     position: "bottomright",
-//   })
-// );
+map.addControl(
+  L.control.zoom({
+    position: "bottomright",
+  })
+);
 
 //overlay layers
 
