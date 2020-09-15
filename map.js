@@ -5,10 +5,10 @@ const initZoom = 6;
 const map = L.mapbox.map("map").setView(center, initZoom);
 
 // Stamen basemaps (terrain, toner-lite, watercolor)
-const toner_lite = new L.StamenTileLayer("toner-lite");
+// const toner_lite = new L.StamenTileLayer("toner-lite");
 const watercolor = new L.StamenTileLayer("watercolor");
 const terrain = new L.StamenTileLayer("terrain");
-map.addLayer(toner_lite);
+map.addLayer(watercolor);
 
 // map.addControl(
 //   L.control.zoom({
@@ -19,7 +19,7 @@ map.addLayer(toner_lite);
 //overlay layers
 
 const baseLayers = {
-  "Toner-lite": toner_lite,
+  // "Toner-lite": toner_lite,
   Watercolor: watercolor,
   Terrain: terrain,
 };
