@@ -4,10 +4,6 @@ const center = L.latLng(35, -75.69);
 const initZoom = 6;
 const map = L.mapbox.map("map").setView(center, initZoom);
 
-//Mapbox basemap layers
-const streets = L.mapbox.tileLayer("mapbox.streets");
-const satellite = L.mapbox.tileLayer("mapbox.satellite");
-
 // Stamen basemaps (terrain, toner-lite, watercolor)
 const toner_lite = new L.StamenTileLayer("toner-lite");
 const watercolor = new L.StamenTileLayer("watercolor");
