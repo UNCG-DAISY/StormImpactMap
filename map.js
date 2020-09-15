@@ -2,7 +2,7 @@ L.mapbox.accessToken =
   "pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g";
 const center = L.latLng(35, -75.69);
 const initZoom = 6;
-const map = L.map("map", { zoomControl: false }).setView(center, initZoom);
+const map = L.mapbox.map("map").setView(center, initZoom);
 
 //Mapbox basemap layers
 const streets = L.mapbox.tileLayer("mapbox.streets");
@@ -14,11 +14,11 @@ const watercolor = new L.StamenTileLayer("watercolor");
 const terrain = new L.StamenTileLayer("terrain");
 map.addLayer(toner_lite);
 
-map.addControl(
-  L.control.zoom({
-    position: "bottomright",
-  })
-);
+// map.addControl(
+//   L.control.zoom({
+//     position: "bottomright",
+//   })
+// );
 
 //overlay layers
 
