@@ -6,7 +6,9 @@ const map = L.mapbox.map("map").setView(center, initZoom);
 
 // Stamen basemaps (terrain, toner-lite, watercolor)
 // const toner_lite = new L.StamenTileLayer("toner-lite");
-const watercolor = new L.StamenTileLayer("watercolor");
+const watercolor = new L.tileLayer(
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png"
+);
 const terrain = new L.StamenTileLayer("terrain");
 map.addLayer(watercolor);
 
