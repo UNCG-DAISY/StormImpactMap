@@ -8,13 +8,25 @@ const map = L.map("map", {
 
 // Stamen basemaps (terrain, toner-lite, watercolor)
 const toner_lite = new L.tileLayer(
-  "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png"
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png",
+  {
+    attribution:
+      "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.",
+  }
 );
 const watercolor = new L.tileLayer(
-  "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png"
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png",
+  {
+    attribution:
+      "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.",
+  }
 );
 const terrain = new L.tileLayer(
-  "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png"
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png",
+  {
+    attribution:
+      "Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.",
+  }
 );
 map.addLayer(toner_lite);
 
@@ -27,7 +39,7 @@ map.addControl(
 //overlay layers
 
 const baseLayers = {
-  // "Toner-lite": toner_lite,
+  "Toner-lite": toner_lite,
   Watercolor: watercolor,
   Terrain: terrain,
 };
