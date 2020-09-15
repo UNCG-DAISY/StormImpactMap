@@ -2,7 +2,9 @@ L.mapbox.accessToken =
   "pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g";
 const center = L.latLng(35, -75.69);
 const initZoom = 6;
-const map = L.map("map").setView(center, initZoom);
+const map = L.map("map", {
+  zoomControl: false,
+}).setView(center, initZoom);
 
 // Stamen basemaps (terrain, toner-lite, watercolor)
 const toner_lite = new L.tileLayer(
