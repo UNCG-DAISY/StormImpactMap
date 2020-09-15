@@ -95,8 +95,6 @@ function getSampleData(url, order) {
           baseLayers,
           overlayLayers
         ).addTo(map);
-        console.log(overlayLayers["Isaias CSV"]);
-        console.log(overlayLayers["Michael CSV"]);
       }
     });
 }
