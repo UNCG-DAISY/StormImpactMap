@@ -5,12 +5,16 @@ const initZoom = 6;
 const map = L.mapbox.map("map").setView(center, initZoom);
 
 // Stamen basemaps (terrain, toner-lite, watercolor)
-// const toner_lite = new L.StamenTileLayer("toner-lite");
-const watercolor = new L.tileLayer(
+const toner_lite = new L.tileLayer(
   "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png"
 );
-const terrain = new L.StamenTileLayer("terrain");
-map.addLayer(watercolor);
+const watercolor = new L.tileLayer(
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png"
+);
+const terrain = new L.tileLayer(
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png"
+);
+map.addLayer(toner_lite);
 
 // map.addControl(
 //   L.control.zoom({
