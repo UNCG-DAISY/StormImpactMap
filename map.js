@@ -69,13 +69,24 @@ function getSampleData(url, order) {
       let markerGroup = L.markerClusterGroup();
       markers.forEach((element) => {
         vals = element.split(",");
-        let storm_id = vals[0];
-        let archive = vals[1];
-        let image = vals[2];
-        let date = vals[3];
-        let wash_pred = vals[4];
-        let lat = vals[5];
-        let lon = vals[6];
+        // let storm_id = vals[0];
+        // let archive = vals[1];
+        // let image = vals[2];
+        // let date = vals[3];
+        // let wash_pred = vals[4];
+        // let id = vals[5];
+        // let lat = vals[6];
+        // let lon = vals[7];
+
+        let temp = vals[0];
+        let storm_id = vals[1];
+        let archive = vals[2];
+        let image = vals[3];
+        let date = vals[4];
+        let wash_pred = vals[5];
+        let id = vals[6];
+        let lat = vals[7];
+        let lon = vals[8];
 
         let popupContent = document.createElement("div");
         popupContent.innerText =
@@ -93,6 +104,19 @@ function getSampleData(url, order) {
           lat +
           "\n Longitude: " +
           lon;
+
+        // let popupBtn = document.createElement("button");
+        // popupBtn.onclick = function () {
+
+        // };
+
+        let popupLink = document.createElement("a");
+        popupLink.href =
+          "https://coastalimagelabeler.science/api/image/show/Compressed/" + id;
+        popupLink.text = "View image";
+        popupLink.target = "_blank";
+        popupContent.appendChild(popupLink);
+        // popupContent.appendChild(popupBtn);
 
         if (wash_pred > 0.5) {
           const marker = L.marker([lat, lon], {
