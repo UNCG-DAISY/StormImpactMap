@@ -64,8 +64,15 @@
       <!-- </div> -->
     </div>
 
-    <header>
+    <header id="header">
       <h3 id="title">Storm Impact Map</h3>
+
+      <select name="storms" id="storm-selector" onchange="changeStorm">
+        <option value="Florence">Florence</option>
+        <option value="Isaias">Isaias</option>
+        <option value="Dorian">Dorian</option>
+        <option value="Michael">Michael</option>
+      </select>
     </header>
 
     <div id="about-modal" class="modal">

@@ -38,22 +38,42 @@ map.addControl(
 
 //overlay layers
 
+const fLayers = {
+  Images: florence,
+  Prediction: florence_pred,
+  Overwash: florence_wash,
+};
+
+const mLayers = {
+  Images: michael,
+  Prediction: michael_pred,
+  Overwash: michael_wash,
+};
+
+const iLayers = {
+  Images: isaias,
+};
+
+const dLayers = {
+  Images: dorian,
+};
+
 const baseLayers = {
   "Toner-lite": toner_lite,
   Watercolor: watercolor,
   Terrain: terrain,
 };
 
-const overlayLayers = {
-  Florence: florence,
-  Dorian: dorian,
-  Michael: michael,
-  Isaias: isaias,
-  "Michael Prediction": michael_pred,
-  "Florence Prediction": florence_pred,
-  "Michael Overwash": michael_wash,
-  "Florence Overwash": florence_wash,
-};
+// const overlayLayers = {
+//   Florence: florence,
+//   Dorian: dorian,
+//   Michael: michael,
+//   Isaias: isaias,
+//   "Michael Prediction": michael_pred,
+//   "Florence Prediction": florence_pred,
+//   "Michael Overwash": michael_wash,
+//   "Florence Overwash": florence_wash,
+// };
 
 getSampleData("data/HurricaneIsaiasSampleData.csv", 1);
 
@@ -150,17 +170,50 @@ function getSampleData(url, order) {
       });
 
       if (order == 1) {
-        overlayLayers["Isaias CSV"] = markerGroup;
+        iLayers["CSV"] = markerGroup;
         getSampleData("data/HurricaneFlorenceSampleData.csv", 2);
       } else if (order == 2) {
-        overlayLayers["Florence CSV"] = markerGroup;
+        fLayers["CSV"] = markerGroup;
         getSampleData("data/HurricaneMichaelSampleData.csv", 3);
       } else {
-        overlayLayers["Michael CSV"] = markerGroup;
-        const layersControl = new L.Control.Layers(
-          baseLayers,
-          overlayLayers
-        ).addTo(map);
+        mLayers["CSV"] = markerGroup;
       }
     });
 }
+
+// const fControl = new L.Control.Layers();
+// const mControl;
+// const iControl;
+// const dControl;
+
+let overlayLayers = fLayers;
+let layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(map);
+
+function changeStorm() {
+  layersControl.remove();
+  map.eachLayer(function (layer) {
+    map.removeLayer(layer);
+  });
+  map.addLayer(toner_lite);
+
+  const selected_value = $("#storm-selector").val();
+  switch (selected_value) {
+    case "Dorian":
+      overlayLayers = dLayers;
+      break;
+    case "Florence":
+      overlayLayers = fLayers;
+      break;
+    case "Michael":
+      overlayLayers = mLayers;
+      break;
+    case "Isaias":
+      overlayLayers = iLayers;
+      break;
+  }
+  console.log(selected_value);
+  console.log(overlayLayers);
+  layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(map);
+}
+
+$("#storm-selector").change(changeStorm);
