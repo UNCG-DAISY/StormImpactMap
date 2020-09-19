@@ -105,18 +105,28 @@ function getSampleData(url, order) {
           "\n Longitude: " +
           lon;
 
-        // let popupBtn = document.createElement("button");
-        // popupBtn.onclick = function () {
-
-        // };
+        let popupBtn = document.createElement("button");
+        popupBtn.innerHTML = "View Image";
+        popupBtn.onclick = function () {
+          let popupImg = document.createElement("img");
+          popupImg.src =
+            "https://coastalimagelabeler.science/api/image/show/Compressed/" +
+            id;
+          popupContent.appendChild(popupImg);
+        };
+        popupBtn.style.cssText = `
+        height: 25px;
+        width: auto;
+        `;
 
         let popupLink = document.createElement("a");
         popupLink.href =
           "https://coastalimagelabeler.science/api/image/show/Compressed/" + id;
         popupLink.text = "View image";
+        popupLink.style.display = "block";
         popupLink.target = "_blank";
         popupContent.appendChild(popupLink);
-        // popupContent.appendChild(popupBtn);
+        popupContent.appendChild(popupBtn);
 
         if (wash_pred > 0.5) {
           const marker = L.marker([lat, lon], {
