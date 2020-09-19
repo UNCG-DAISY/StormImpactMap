@@ -125,12 +125,11 @@ function getSampleData(url, order) {
           "\n Longitude: " +
           lon;
 
-        // let popupLink = document.createElement("a");
-        // popupLink.href =
-        //   "https://coastalimagelabeler.science/api/image/show/Compressed/" + id;
-        // popupLink.text = "View image";
-        // popupLink.style.display = "block";
-        // popupLink.target = "_blank";
+        let popupLink = document.createElement("a");
+        popupLink.href =
+          "https://coastalimagelabeler.science/api/image/show/Compressed/" + id;
+        popupLink.style.display = "block";
+        popupLink.target = "_blank";
         // popupLink.innerHTML =
         //   `
         // <img src="https://coastalimagelabeler.science/api/image/show/Compressed/` +
@@ -139,24 +138,25 @@ function getSampleData(url, order) {
 
         let popupBtn = document.createElement("button");
         popupBtn.innerHTML = "View Image";
-        popupBtn.onclick = function () {
-          let popupImg = document.createElement("img");
-          popupImg.src =
-            "https://coastalimagelabeler.science/api/image/show/Compressed/" +
-            id;
-          popupImg.style.cssText = `
-            height: 200px;
-            width: 200px;
-            `;
-        };
+        // popupBtn.onclick = function () {
+        // let popupImg = document.createElement("img");
+        // popupImg.src =
+        //   "https://coastalimagelabeler.science/api/image/show/Compressed/" +
+        //   id;
+        // popupImg.style.cssText = `
+        //   height: 200px;
+        //   width: 200px;
+        //   `;
+        // popupBtn.appendChild(popupImg);
+        // };
         popupBtn.style.cssText = `
         height: 25px;
         width: auto;
         display: block;
         `;
 
-        // popupContent.appendChild(popupLink);
-        popupContent.appendChild(popupBtn);
+        popupContent.appendChild(popupLink);
+        popupLink.appendChild(popupBtn);
 
         if (wash_pred > 0.5) {
           const marker = L.marker([lat, lon], {
