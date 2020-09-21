@@ -1,3 +1,5 @@
+img_base_url = "https://coastalimagelabeler.science/api/image/show/Compressed/";
+
 function getSampleData(url, order) {
   let csv_data = "";
   fetch(url)
@@ -37,18 +39,18 @@ function getSampleData(url, order) {
         //           archive
 
         let popupLink = document.createElement("a");
-        popupLink.href =
-          "https://coastalimagelabeler.science/api/image/show/Compressed/" + id;
+        popupLink.href = img_base_url + id;
         popupLink.style.display = "block";
         popupLink.target = "_blank";
-        popupLink.innerHTML =
-          `
-        <img src="https://coastalimagelabeler.science/api/image/show/Compressed/` +
-          id +
-          `" style="width: 200px;height:200px;"></img>`;
+        popupLink.text = "View Image";
+        // popupLink.innerHTML =
+        //   '<img src="' +
+        //   img_base_url +
+        //   id +
+        //   '" style="width: 200px;height:200px;"></img>';
 
-        let popupBtn = document.createElement("button");
-        popupBtn.innerHTML = "View Image";
+        // let popupBtn = document.createElement("button");
+        // popupBtn.innerHTML = "View Image";
         // popupBtn.onclick = function () {
         // let popupImg = document.createElement("img");
         // popupImg.src =
@@ -60,27 +62,14 @@ function getSampleData(url, order) {
         //   `;
         // popupBtn.appendChild(popupImg);
         // };
-        popupBtn.style.cssText = `
-        height: 25px;
-        width: auto;
-        display: block;
-        `;
+        // popupBtn.style.cssText = `
+        // height: 25px;
+        // width: auto;
+        // display: block;
+        // `;
 
         //
         // popupLink.appendChild(popupBtn);
-
-        imgLoad("http://i.imgur.com/YzkSFCW.png").then(
-          function (response) {
-            // The first runs when the promise resolves, with the request.reponse specified within the resolve() method.
-            var imageURL = window.URL.createObjectURL(response);
-            myImage.src = imageURL;
-            body.appendChild(myImage);
-            // The second runs when the promise is rejected, and logs the Error specified with the reject() method.
-          },
-          function (Error) {
-            console.log(Error);
-          }
-        );
 
         if (wash_pred > 0.75) {
           const marker = L.marker([lat, lon]).bindPopup(popupContent, {
