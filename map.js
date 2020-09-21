@@ -98,32 +98,22 @@ function getSampleData(url, order) {
         let lat = vals[6];
         let lon = vals[7];
 
-        // let temp = vals[0];
-        // let storm_id = vals[1];
-        // let archive = vals[2];
-        // let image = vals[3];
-        // let date = vals[4];
-        // let wash_pred = vals[5];
-        // let id = vals[6];
-        // let lat = vals[7];
-        // let lon = vals[8];
-
         let popupContent = document.createElement("div");
         popupContent.innerText =
           "Storm ID: " +
           storm_id +
-          "\n Archive: " +
-          archive +
           "\n Image: " +
           image +
-          "\n Data: " +
+          "\n Date: " +
           date +
           "\n Prediction: " +
-          wash_pred +
-          "\n Latitude: " +
-          lat +
-          "\n Longitude: " +
-          lon;
+          wash_pred.substring(0, 4);
+        // "\n Latitude: " +
+        // lat +
+        // "\n Longitude: " +
+        // lon;
+        // Archive: " +
+        //           archive
 
         let popupLink = document.createElement("a");
         popupLink.href =
@@ -158,11 +148,9 @@ function getSampleData(url, order) {
         popupContent.appendChild(popupLink);
         popupLink.appendChild(popupBtn);
 
-        if (wash_pred > 0.5) {
-          const marker = L.marker([lat, lon], {
-            icon: wash_pred > 0.75 ? greenIcon : redIcon,
-          }).bindPopup(popupContent, {
-            minWidth: 210,
+        if (wash_pred > 0.75) {
+          const marker = L.marker([lat, lon]).bindPopup(popupContent, {
+            // minWidth: 210,
           });
 
           markerGroup.addLayer(marker);
@@ -212,8 +200,6 @@ function changeStorm() {
       overlayLayers = iLayers;
       break;
   }
-  console.log(selected_value);
-  console.log(overlayLayers);
   layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(map);
 }
 
