@@ -1,4 +1,5 @@
-img_base_url = "https://coastalimagelabeler.science/api/image/show/Compressed/";
+img_base_url = "https://coastalimagelabeler.science/api/image/";
+img_type = "/original"
 
 function getSampleData(url, order) {
   let csv_data = "";
@@ -39,7 +40,7 @@ function getSampleData(url, order) {
         //           archive
 
         let popupLink = document.createElement("a");
-        popupLink.href = img_base_url + id;
+        popupLink.href = img_base_url + id + img_type;
         popupLink.style.display = "block";
         popupLink.target = "_blank";
         popupLink.text = "View Image";
