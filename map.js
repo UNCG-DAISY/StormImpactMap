@@ -39,9 +39,9 @@ map.addControl(
 //overlay layers
 
 const fLayers = {
-  Images: florence,
-  Prediction: florence_pred,
-  Overwash: florence_wash,
+  "NOAA Images": florence,
+  "USGS Prediction": florence_pred,
+  "USGS Overwash": florence_wash,
 };
 
 const mLayers = {
