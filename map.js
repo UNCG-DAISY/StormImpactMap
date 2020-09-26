@@ -40,22 +40,22 @@ map.addControl(
 
 const fLayers = {
   "NOAA Images": florence,
-  "USGS Prediction": florence_pred,
-  "USGS Overwash": florence_wash,
+  "USGS Predicted Overwash": florence_pred,
+  "USGS Measured Overwash": florence_wash,
 };
 
 const mLayers = {
-  Images: michael,
-  Prediction: michael_pred,
-  Overwash: michael_wash,
+  "NOAA Images": michael,
+  "USGS Predicted Overwash": michael_pred,
+  "USGS Measured Overwash": michael_wash,
 };
 
 const iLayers = {
-  Images: isaias,
+  "NOAA Images": isaias,
 };
 
 const dLayers = {
-  Images: dorian,
+  "NOAA Images": dorian,
 };
 
 const baseLayers = {
