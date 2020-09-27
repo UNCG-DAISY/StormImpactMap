@@ -83,17 +83,17 @@ function getSampleData(url, order) {
       });
 
       if (order == 1) {
-        iLayers["ML Predicted Overwash"] = markerGroup;
+        iLayers["CSV"] = markerGroup;
         overlayLayers = iLayers;
         layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(
           map
         );
         getSampleData("data/HurricaneFlorenceSampleData.csv", 2);
       } else if (order == 2) {
-        fLayers["ML Predicted Overwash"] = markerGroup;
+        fLayers["CSV"] = markerGroup;
         getSampleData("data/HurricaneMichaelSampleData.csv", 3);
       } else {
-        mLayers["ML Predicted Overwash"] = markerGroup;
+        mLayers["CSV"] = markerGroup;
       }
     });
 }
