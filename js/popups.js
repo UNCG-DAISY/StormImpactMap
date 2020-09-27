@@ -1,4 +1,5 @@
-img_base_url = "https://coastalimagelabeler.science/api/image/show/Compressed/";
+img_base_url = "https://coastalimagelabeler.science/api/image/";
+img_type = "/original"
 
 function getSampleData(url, order) {
   let csv_data = "";
@@ -39,7 +40,7 @@ function getSampleData(url, order) {
         //           archive
 
         let popupLink = document.createElement("a");
-        popupLink.href = img_base_url + id;
+        popupLink.href = img_base_url + id + img_type;
         popupLink.style.display = "block";
         popupLink.target = "_blank";
         popupLink.text = "View Image";
@@ -82,17 +83,17 @@ function getSampleData(url, order) {
       });
 
       if (order == 1) {
-        iLayers["CSV"] = markerGroup;
+        iLayers["ML Predicted Overwash"] = markerGroup;
         overlayLayers = iLayers;
         layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(
           map
         );
         getSampleData("data/HurricaneFlorenceSampleData.csv", 2);
       } else if (order == 2) {
-        fLayers["CSV"] = markerGroup;
+        fLayers["ML Predicted Overwash"] = markerGroup;
         getSampleData("data/HurricaneMichaelSampleData.csv", 3);
       } else {
-        mLayers["CSV"] = markerGroup;
+        mLayers["ML Predicted Overwash"] = markerGroup;
       }
     });
 }
