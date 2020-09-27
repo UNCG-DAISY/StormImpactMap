@@ -133,18 +133,11 @@
 
 <!-- expanding and collapsing menu  -->
 
-<script>
-    var $hamburger = $(".hamburger");
-    $hamburger.on("click", function (e) {
-        // $hamburger.toggleClass("is-active");
-    });
-</script>
+
     <script>
       let collapsed = true;
       $(".hamburger").click(function () {
-        $hamburger.toggleClass("is-active");
-        console.log("toggled");
-
+        $('.hamburger').toggleClass("is-active");
         if (collapsed) {
           $("#sidenav").css("width", "200");
           $("#sidenav").css("transition", "width .5s");
@@ -153,7 +146,7 @@
             collapsed = false;
           }, 500);
         } else {
-          $("#sidenav").css("width", "60");
+          $("#sidenav").css("width", "70");
           $(".menu-title").css("display", "none");
           collapsed = true;
         }
