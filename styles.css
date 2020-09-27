@@ -39,12 +39,12 @@ i {
   padding-right: 20px;
   width: 40px;
 }
-.menu-icon {
+/* .hamburger {
   width: 35px;
   height: 5px;
   background-color: white;
   margin: 6px 0;
-}
+} */
 
 .menu-item {
   padding: 10px 0 10px 25px;

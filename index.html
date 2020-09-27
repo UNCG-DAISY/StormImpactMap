@@ -29,11 +29,8 @@
       crossorigin="anonymous"
     />
 
-    <!-- not needed if using own iconCreateFunction -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
-    />
+    <!-- animated menu button from https://jonsuh.com/hamburgers/ -->
+    <link rel="stylesheet" href="css/hamburgers.css">
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -44,11 +41,11 @@
 
   <body>
     <div id="sidenav">
-      <div id="menu-icon">
-        <div class="menu-icon"></div>
-        <div class="menu-icon"></div>
-        <div class="menu-icon"></div>
-      </div>
+        <button class="hamburger hamburger--vortex" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
 
       <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
       <div class="menu-item" data-toggle="modal" data-target="#about-modal">
@@ -123,10 +120,21 @@
 
     <div id="map"></div>
 
+
+<!-- expanding and collapsing menu  -->
+
+<script>
+    var $hamburger = $(".hamburger");
+    $hamburger.on("click", function (e) {
+        // $hamburger.toggleClass("is-active");
+    });
+</script>
     <script>
       let collapsed = true;
-      $("#menu-icon").click(function () {
-        console.log("clicked");
+      $(".hamburger").click(function () {
+        $hamburger.toggleClass("is-active");
+        console.log("toggled");
+
         if (collapsed) {
           $("#sidenav").css("width", "200");
           $("#sidenav").css("transition", "width .5s");
