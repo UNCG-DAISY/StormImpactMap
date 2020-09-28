@@ -5,16 +5,18 @@
     <title>View Image</title>
 </head>
 <body>
-
+    <h1>Is there washover?</h1>
+    <button>Yes</button>
+    <button>No</button>
     <script src="js/popups.js"></script>
     <script>
         let popupImg = document.createElement("img");
         popupImg.src =  window.sessionStorage.img_src;
         popupImg.style.cssText = `
-          height: 200px;
-          width: 200px;
+          height: 700px;
+          width: 700px;
           `;
-          document.body.appendChild(popupImg);
+          document.body.prepend(popupImg);
 
     </script>
 </body>

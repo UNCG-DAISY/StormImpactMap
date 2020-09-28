@@ -1,6 +1,5 @@
 img_base_url = "https://coastalimagelabeler.science/api/image/";
 img_type = "/original";
-img_grad = "/gradcam";
 
 function getSampleData(url, order) {
   let csv_data = "";
@@ -47,7 +46,7 @@ function getSampleData(url, order) {
         popupLink.addEventListener("click", function () {
             console.log("clicked");
                     window.sessionStorage.img_src =
-                      img_base_url + id;
+                      img_base_url + id + img_type;
                     console.log(window.sessionStorage.img_src);
 
         });
