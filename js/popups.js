@@ -1,5 +1,5 @@
 img_base_url = "https://coastalimagelabeler.science/api/image/";
-img_type = "/original"
+img_type = "/original";
 
 function getSampleData(url, order) {
   let csv_data = "";
@@ -30,8 +30,7 @@ function getSampleData(url, order) {
           image +
           "\n Date: " +
           date +
-          "\n Prediction: " +
-          wash_pred.substring(0, 4);
+          "\n Prediction: " + (wash_pred != null ? wash_pred.substring(0, 4) : "");
         // "\n Latitude: " +
         // lat +
         // "\n Longitude: " +
