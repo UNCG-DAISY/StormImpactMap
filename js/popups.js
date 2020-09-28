@@ -39,7 +39,17 @@ function getSampleData(url, order) {
         //           archive
 
         let popupLink = document.createElement("a");
-        popupLink.href = img_base_url + id + img_type;
+    
+        popupLink.classList.add("img-link");
+
+        popupLink.href = "imageviewer.html";
+        popupLink.addEventListener("click", function () {
+            console.log("clicked");
+                    window.sessionStorage.img_src =
+                      img_base_url + id;
+                    console.log(window.sessionStorage.img_src);
+
+        });
         popupLink.style.display = "block";
         popupLink.target = "_blank";
         popupLink.text = "View Image";
