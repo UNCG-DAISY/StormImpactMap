@@ -1,5 +1,7 @@
 img_base_url = "https://coastalimagelabeler.science/api/image/";
-img_type = "/original";
+img_compressed = "/compressed";
+img_original = "/original";
+img_grad = "/gradcam";
 
 function getSampleData(url, order) {
   let csv_data = "";
@@ -39,21 +41,33 @@ function getSampleData(url, order) {
         //           archive
 
         let popupLink = document.createElement("a");
-    
         popupLink.classList.add("img-link");
-
         popupLink.href = "imageviewer.html";
         popupLink.addEventListener("click", function () {
             console.log("clicked");
                     window.sessionStorage.img_src =
-                      img_base_url + id + img_type;
+                      img_base_url + id + img_compressed;
                     console.log(window.sessionStorage.img_src);
 
         });
         popupLink.style.display = "block";
         popupLink.target = "_blank";
         popupLink.text = "View Image";
-        // popupLink.innerHTML =
+
+        let ML_link = document.createElement("a");
+        ML_link.classList.add("img-link");
+        ML_link.href = "imageviewer.html";
+        ML_link.addEventListener("click", function () {
+          console.log("clicked");
+          window.sessionStorage.img_src = img_base_url + id + img_grad;
+          console.log(window.sessionStorage.img_src);
+        });
+        ML_link.style.display = "block";
+        ML_link.target = "_blank";
+        ML_link.text = "View ML Results Link";        
+
+
+        // ML_link.innerHTML =
         //   '<img src="' +
         //   img_base_url +
         //   id +
@@ -79,13 +93,16 @@ function getSampleData(url, order) {
         // `;
 
         //
-        // popupLink.appendChild(popupBtn);
+        // ML_link.appendChild(popupBtn);
 
         if (wash_pred > 0.75) {
           const marker = L.marker([lat, lon]).bindPopup(popupContent, {
             // minWidth: 210,
           });
-          marker.on("click", popupContent.appendChild(popupLink));
+          marker.on("click", function () {
+              popupContent.appendChild(popupLink);
+              popupContent.appendChild(ML_link);
+          });
 
           markerGroup.addLayer(marker);
         }
