@@ -44,12 +44,6 @@ function getSampleData(url, order) {
         popupLink.style.display = "block";
         popupLink.target = "_blank";
         popupLink.text = "View Image";
-
-        let popupLink = document.createElement("a");
-        popupLink.href = img_base_url + id + img_grad;
-        popupLink.style.display = "block";
-        popupLink.target = "_blank";
-        popupLink.text = "View ML results";
         // popupLink.innerHTML =
         //   '<img src="' +
         //   img_base_url +
