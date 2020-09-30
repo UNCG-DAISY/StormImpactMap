@@ -42,36 +42,26 @@ function getSampleData(url, order) {
 
         let popupLink = document.createElement("a");
         popupLink.classList.add("img-link");
-        popupLink.href = "imageviewer.html";
-        popupLink.addEventListener("click", function () {
-            console.log("clicked");
-                    window.sessionStorage.img_src =
-                      img_base_url + id + img_compressed;
-                    console.log(window.sessionStorage.img_src);
-
-        });
+        popupLink.href = img_base_url + id + img_compressed;
         popupLink.style.display = "block";
         popupLink.target = "_blank";
         popupLink.text = "View Image";
 
         let ML_link = document.createElement("a");
         ML_link.classList.add("img-link");
-        ML_link.href = "imageviewer.html";
-        ML_link.addEventListener("click", function () {
-          console.log("clicked");
-          window.sessionStorage.img_src = img_base_url + id + img_grad;
-          console.log(window.sessionStorage.img_src);
-        });
+        ML_link.href = img_base_url + id + img_grad;
         ML_link.style.display = "block";
         ML_link.target = "_blank";
-        ML_link.text = "View ML Results Link";        
+        ML_link.text = "View ML Results Link";      
+        
+        lrg_img = document.createElement("img")
+        lrg_img.src = img_base_url + id + img_compressed
+        popupLink.addEventListener("click", function () {
+            popupContent.appendChild(lrg_img);
+        });
 
 
-        // ML_link.innerHTML =
-        //   '<img src="' +
-        //   img_base_url +
-        //   id +
-        //   '" style="width: 200px;height:200px;"></img>';
+
 
         // let popupBtn = document.createElement("button");
         // popupBtn.innerHTML = "View Image";
@@ -91,8 +81,6 @@ function getSampleData(url, order) {
         // width: auto;
         // display: block;
         // `;
-
-        //
         // ML_link.appendChild(popupBtn);
 
         if (wash_pred > 0.75) {
