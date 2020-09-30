@@ -53,15 +53,6 @@ function getSampleData(url, order) {
         ML_link.style.display = "block";
         ML_link.target = "_blank";
         ML_link.text = "View ML Results Link";      
-        
-        lrg_img = document.createElement("img")
-        lrg_img.src = img_base_url + id + img_compressed
-        popupLink.addEventListener("click", function () {
-            popupContent.appendChild(lrg_img);
-        });
-
-
-
 
         // let popupBtn = document.createElement("button");
         // popupBtn.innerHTML = "View Image";
