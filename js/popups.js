@@ -52,7 +52,7 @@ function getSampleData(url, order) {
         ML_link.href = img_base_url + id + img_grad;
         ML_link.style.display = "block";
         ML_link.target = "_blank";
-        ML_link.text = "View ML Results Link";      
+        ML_link.text = "View ML Results";      
 
         // let popupBtn = document.createElement("button");
         // popupBtn.innerHTML = "View Image";
