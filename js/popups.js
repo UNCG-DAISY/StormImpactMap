@@ -33,12 +33,6 @@ function getSampleData(url, order) {
           "\n Date: " +
           date +
           "\n Prediction: " + (wash_pred != null ? wash_pred.substring(0, 4) : "");
-        // "\n Latitude: " +
-        // lat +
-        // "\n Longitude: " +
-        // lon;
-        // Archive: " +
-        //           archive
 
         let popupLink = document.createElement("a");
         popupLink.classList.add("img-link");
@@ -53,26 +47,6 @@ function getSampleData(url, order) {
         ML_link.style.display = "block";
         ML_link.target = "_blank";
         ML_link.text = "View ML Results";      
-
-        // let popupBtn = document.createElement("button");
-        // popupBtn.innerHTML = "View Image";
-        // popupBtn.onclick = function () {
-        // let popupImg = document.createElement("img");
-        // popupImg.src =
-        //   "https://coastalimagelabeler.science/api/image/show/Compressed/" +
-        //   id;
-        // popupImg.style.cssText = `
-        //   height: 200px;
-        //   width: 200px;
-        //   `;
-        // popupBtn.appendChild(popupImg);
-        // };
-        // popupBtn.style.cssText = `
-        // height: 25px;
-        // width: auto;
-        // display: block;
-        // `;
-        // ML_link.appendChild(popupBtn);
 
         if (wash_pred > 0.75) {
           const marker = L.marker([lat, lon]).bindPopup(popupContent, {
