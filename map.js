@@ -39,12 +39,14 @@ map.addControl(
 //overlay layers
 
 const fLayers = {
+  "NOAA Track": florence_track,
   "NOAA Images": florence,
   "USGS Predicted Overwash": florence_pred,
   "USGS Measured Overwash": florence_wash,
 };
 
 const mLayers = {
+  "NOAA Track": michael_track,
   "NOAA Images": michael,
   "USGS Predicted Overwash": michael_pred,
   "USGS Measured Overwash": michael_wash,
@@ -55,6 +57,7 @@ const iLayers = {
 };
 
 const dLayers = {
+  "NOAA Track": dorian_track,
   "NOAA Images": dorian,
 };
 
