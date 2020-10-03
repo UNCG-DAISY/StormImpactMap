@@ -56,7 +56,11 @@ function getSampleData(url, order) {
         
         let report_link = document.createElement("button");
         report_link.id = "report-link";
-        report_link.text = "No Washover"
+        report_link.text = "No Washover In Image"
+        report_link.style.cssText = `
+        height: auto;
+        width: auto;
+        `
 
         let params = "?storm_id="+storm_id+"&archive="+archive+"&image="+image+"&id="+id;
 
