@@ -48,6 +48,18 @@ function getSampleData(url, order) {
         ML_link.target = "_blank";
         ML_link.text = "View ML Results";      
 
+        let report_link = document.createElement("button");
+        report_link.id = "report-link";
+        report_link.innerHTML = "No Washover In Image";
+        report_link.style.cssText = `
+          background-color: darkred;
+          height: 50px;
+          width: 100px;
+          border: none;
+          font-color: white;
+          color: white;
+        `;
+
         if (wash_pred > 0.75) {
           const marker = L.marker([lat, lon]).bindPopup(popupContent, {
             // minWidth: 210,
@@ -55,6 +67,8 @@ function getSampleData(url, order) {
           marker.on("click", function () {
               popupContent.appendChild(popupLink);
               popupContent.appendChild(ML_link);
+              popupContent.appendChild(report_link);
+
           });
 
           markerGroup.addLayer(marker);
