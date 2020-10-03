@@ -52,7 +52,89 @@ function getSampleData(url, order) {
         ML_link.href = img_base_url + id + img_grad;
         ML_link.style.display = "block";
         ML_link.target = "_blank";
-        ML_link.text = "View ML Results";      
+        ML_link.text = "View ML Results";    
+        
+        let report_link = document.createElement("button");
+        report_link.id = "report-link";
+        report_link.text = "No Washover"
+
+        let params = "?storm_id="+storm_id+"&archive="+archive+"&image="+image+"&id="+id;
+
+                  report_url =
+                    "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec";
+
+
+// async function postData(url = report_url, data = {}) {
+//   // Default options are marked with *
+//   const response = await fetch(url, {
+//     method: "GET", // *GET, POST, PUT, DELETE, etc.
+//     mode: "no-cors", // no-cors, *cors, same-origin
+//     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+//     credentials: "same-origin", // include, *same-origin, omit
+//     headers: {
+//       "Content-Type": "application/json",
+//       // 'Content-Type': 'application/x-www-form-urlencoded',
+//     },
+//     redirect: "follow", // manual, *follow, error
+//     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+//   })
+//   return response.text(); // parses JSON response into native JavaScript objects
+// }    
+
+
+function postData(report_url, data = {})
+{
+    // fetch("https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec",{
+    //     method:'GET',
+    //     mode:'no-cors'
+    // })
+    // .then((response) => {
+    //     // *** Check for HTTP failure
+    //     if (!response.ok) {
+    //         throw new Error("HTTP status " + response.status);
+    //     }
+    //     // *** Read the text of the response
+    //     console.log(response);
+    //     return response.text();
+    // })
+    // .then((message) => {
+    //     // *** Use the text
+    //     console.log('message: ', message);
+    //     alert(message);
+    // })
+    // .catch((error) => {
+    //     /* ...*** handle/report error, since this code doesn't return the promise chain...*/
+    //     console.log(error);
+    // });
+
+fetch(
+  "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec"
+) // Call the fetch function passing the url of the API as a parameter
+  .then(function () {
+    // Your code for handling the data you get from the API
+  })
+  .catch(function () {
+    // This is where you run code if the server returns any errors
+  });    
+}
+        
+        report_link.addEventListener("click", function () {
+          postData();
+
+          // fetch("https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec" + params, {mode: 'no-cors'})
+          //   .then((response) => response.json())
+          //   .then((data) => console.log(data));
+
+        
+          // let xhttp = new XMLHttpRequest();
+          // xhttp.open(
+          //   "GET",
+          //   "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec" +
+          //     params,
+          //   true
+          // );
+          // xhttp.send();
+        });
 
         // let popupBtn = document.createElement("button");
         // popupBtn.innerHTML = "View Image";
@@ -81,6 +163,7 @@ function getSampleData(url, order) {
           marker.on("click", function () {
               popupContent.appendChild(popupLink);
               popupContent.appendChild(ML_link);
+              popupContent.append(report_link);
           });
 
           markerGroup.addLayer(marker);
