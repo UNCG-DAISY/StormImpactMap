@@ -3,6 +3,18 @@ img_compressed = "/compressed";
 img_original = "/original";
 img_grad = "/gradcam";
 
+
+function postData(report_url, data = {}) {
+  fetch(report_url) // Call the fetch function passing the url of the API as a parameter
+    .then((response) => response.json())
+    .then(function (data) {
+      // This is where you run code if the server returns any errors
+      console.log(data);
+      alert(data);
+    });
+}
+
+
 function getSampleData(url, order) {
   let csv_data = "";
   fetch(url)
@@ -23,6 +35,7 @@ function getSampleData(url, order) {
         let id = vals[5];
         let lat = vals[6];
         let lon = vals[7];
+        let count = 0;
 
         let popupContent = document.createElement("div");
         popupContent.innerText =
@@ -47,7 +60,8 @@ function getSampleData(url, order) {
         ML_link.style.display = "block";
         ML_link.target = "_blank";
         ML_link.text = "View ML Results";    
-        
+        count++;
+
         let report_link = document.createElement("button");
         report_link.id = "report-link";
         report_link.innerHTML = "No Washover in Image";
@@ -59,83 +73,14 @@ function getSampleData(url, order) {
           font-color: white;
           color: white;
         `;
-
-        let params = "?storm_id="+storm_id+"&archive="+archive+"&image="+image+"&id="+id;
-
-                  report_url =
-                    "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec";
-
-
-// async function postData(url = report_url, data = {}) {
-//   // Default options are marked with *
-//   const response = await fetch(url, {
-//     method: "GET", // *GET, POST, PUT, DELETE, etc.
-//     mode: "no-cors", // no-cors, *cors, same-origin
-//     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-//     credentials: "same-origin", // include, *same-origin, omit
-//     headers: {
-//       "Content-Type": "application/json",
-//       // 'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//     redirect: "follow", // manual, *follow, error
-//     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-//   })
-//   return response.text(); // parses JSON response into native JavaScript objects
-// }    
-
-
-function postData(report_url, data = {})
-{
-    // fetch("https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec",{
-    //     method:'GET',
-    //     mode:'no-cors'
-    // })
-    // .then((response) => {
-    //     // *** Check for HTTP failure
-    //     if (!response.ok) {
-    //         throw new Error("HTTP status " + response.status);
-    //     }
-    //     // *** Read the text of the response
-    //     console.log(response);
-    //     return response.text();
-    // })
-    // .then((message) => {
-    //     // *** Use the text
-    //     console.log('message: ', message);
-    //     alert(message);
-    // })
-    // .catch((error) => {
-    //     /* ...*** handle/report error, since this code doesn't return the promise chain...*/
-    //     console.log(error);
-    // });
-
-fetch(
-  "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec"
-) // Call the fetch function passing the url of the API as a parameter
-  .then(function () {
-    // Your code for handling the data you get from the API
-  })
-  .catch(function () {
-    // This is where you run code if the server returns any errors
-  });    
-}
+        console.log('count: ', count);
+        const params = "?storm_id="+storm_id+"&archive="+archive+"&image="+image+"&id="+id;
+        console.log('params: ', params);
+        report_url = "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec" + params;
+        console.log(report_url);
         
         report_link.addEventListener("click", function () {
-          postData();
-
-          // fetch("https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec" + params, {mode: 'no-cors'})
-          //   .then((response) => response.json())
-          //   .then((data) => console.log(data));
-
-        
-          // let xhttp = new XMLHttpRequest();
-          // xhttp.open(
-          //   "GET",
-          //   "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec" +
-          //     params,
-          //   true
-          // );
-          // xhttp.send();
+          postData(report_url);
         });
 
 
@@ -148,6 +93,7 @@ fetch(
               popupContent.appendChild(popupLink);
               popupContent.appendChild(ML_link);
               popupContent.appendChild(report_link);
+              console.log(++count);
 
           });
 
