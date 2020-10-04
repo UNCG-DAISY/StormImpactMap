@@ -32,8 +32,8 @@ const florence_wash = new L.Shapefile(
   "data/shapefiles/Florence_Overwash_Extent.zip"
 );
 
-const florence_track = new L.Shapefile("data/shapefiles/al052019_best_track.zip");
+const dorian_track = new L.Shapefile("data/shapefiles/al052019_best_track.zip");
 
 const michael_track = new L.Shapefile("data/shapefiles/al142018_best_track.zip");
 
-const dorian_track = new L.Shapefile("data/shapefiles/al062018_best_track.zip");
+const florence_track = new L.Shapefile("data/shapefiles/al062018_best_track.zip");
