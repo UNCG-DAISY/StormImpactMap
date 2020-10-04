@@ -50,7 +50,7 @@ function getSampleData(url, order) {
 
         let report_link = document.createElement("button");
         report_link.id = "report-link";
-        report_link.innerHTML = "No Washover In Image";
+        report_link.innerHTML = "No Washover in Image";
         report_link.style.cssText = `
           background-color: darkred;
           height: 50px;
