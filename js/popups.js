@@ -34,7 +34,7 @@ function getSampleData(url, order) {
         let lat = vals[6];
         let lon = vals[7];
 
-        const params = "?storm_id=" + storm_id + "&archive=" + archive + "&image=" + image + "&id=" + id;
+        const params = "?storm_id=" + storm_id + "&archive=" + archive + "&image=" + image + "&id=" + id + "&wash_pred=" + wash_pred;
 
         let popupContent = document.createElement("div");
         popupContent.innerText =
