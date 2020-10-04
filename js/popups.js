@@ -33,12 +33,6 @@ function getSampleData(url, order) {
           "\n Date: " +
           date +
           "\n Prediction: " + (wash_pred != null ? wash_pred.substring(0, 4) : "");
-        // "\n Latitude: " +
-        // lat +
-        // "\n Longitude: " +
-        // lon;
-        // Archive: " +
-        //           archive
 
         let popupLink = document.createElement("a");
         popupLink.classList.add("img-link");
@@ -56,11 +50,15 @@ function getSampleData(url, order) {
         
         let report_link = document.createElement("button");
         report_link.id = "report-link";
-        report_link.text = "No Washover In Image"
+        report_link.innerHTML = "No Washover in Image";
         report_link.style.cssText = `
-        height: auto;
-        width: auto;
-        `
+          background-color: darkred;
+          height: 50px;
+          width: 100px;
+          border: none;
+          font-color: white;
+          color: white;
+        `;
 
         let params = "?storm_id="+storm_id+"&archive="+archive+"&image="+image+"&id="+id;
 
@@ -140,25 +138,7 @@ fetch(
           // xhttp.send();
         });
 
-        // let popupBtn = document.createElement("button");
-        // popupBtn.innerHTML = "View Image";
-        // popupBtn.onclick = function () {
-        // let popupImg = document.createElement("img");
-        // popupImg.src =
-        //   "https://coastalimagelabeler.science/api/image/show/Compressed/" +
-        //   id;
-        // popupImg.style.cssText = `
-        //   height: 200px;
-        //   width: 200px;
-        //   `;
-        // popupBtn.appendChild(popupImg);
-        // };
-        // popupBtn.style.cssText = `
-        // height: 25px;
-        // width: auto;
-        // display: block;
-        // `;
-        // ML_link.appendChild(popupBtn);
+
 
         if (wash_pred > 0.75) {
           const marker = L.marker([lat, lon]).bindPopup(popupContent, {
@@ -167,7 +147,8 @@ fetch(
           marker.on("click", function () {
               popupContent.appendChild(popupLink);
               popupContent.appendChild(ML_link);
-              popupContent.append(report_link);
+              popupContent.appendChild(report_link);
+
           });
 
           markerGroup.addLayer(marker);
