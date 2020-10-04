@@ -78,6 +78,7 @@ body {
   width: 100%;
 }
 
-.modal-body {
+.modal-body, .modal-title {
     position: relative;
+    margin: auto;
 }

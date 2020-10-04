@@ -2,6 +2,16 @@ img_base_url = "https://coastalimagelabeler.science/api/image/";
 img_compressed = "/compressed";
 img_original = "/original";
 img_grad = "/gradcam";
+report_url = "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec";
+
+function postData(report_url, data = {}) {
+  fetch(report_url) // Call the fetch function passing the url of the API as a parameter
+    .then((response) => response.json())
+    .then(function (data) {
+      // This is where you run code if the server returns any errors
+      console.log(data);
+    });
+}
 
 function getSampleData(url, order) {
   let csv_data = "";
@@ -23,6 +33,8 @@ function getSampleData(url, order) {
         let id = vals[5];
         let lat = vals[6];
         let lon = vals[7];
+
+        const params = "?storm_id=" + storm_id + "&archive=" + archive + "&image=" + image + "&id=" + id + "&wash_pred=" + wash_pred;
 
         let popupContent = document.createElement("div");
         popupContent.innerText =
@@ -46,7 +58,7 @@ function getSampleData(url, order) {
         ML_link.href = img_base_url + id + img_grad;
         ML_link.style.display = "block";
         ML_link.target = "_blank";
-        ML_link.text = "View ML Results";      
+        ML_link.text = "View ML Results";    
 
         let report_link = document.createElement("button");
         report_link.id = "report-link";
@@ -59,18 +71,20 @@ function getSampleData(url, order) {
           font-color: white;
           color: white;
         `;
+        report_link.href = report_url + params;
+
+        report_link.addEventListener("click", function () {
+          postData(report_link.href);
+        });
 
         if (wash_pred > 0.75) {
           const marker = L.marker([lat, lon]).bindPopup(popupContent, {
             // minWidth: 210,
           });
-          marker.on("click", function () {
-              popupContent.appendChild(popupLink);
-              popupContent.appendChild(ML_link);
-              popupContent.appendChild(report_link);
 
-          });
-
+          popupContent.appendChild(popupLink);
+          popupContent.appendChild(ML_link);
+          popupContent.appendChild(report_link);
           markerGroup.addLayer(marker);
         }
       });

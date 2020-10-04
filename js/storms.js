@@ -196,5 +196,3 @@ const dorian = L.layerGroup([
   sep19a,
   sep20a,
 ]);
-
-console.log("loaded storm images");
