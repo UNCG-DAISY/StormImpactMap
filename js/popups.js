@@ -44,7 +44,7 @@ function getSampleData(url, order) {
           image +
           "\n Date: " +
           date +
-          "\n Prediction: " + (wash_pred != null ? wash_pred.substring(0, 4) : "");
+          "\n Washover Probability: " + (wash_pred != null ? wash_pred.substring(0, 4) : "");
 
         let popupLink = document.createElement("a");
         popupLink.classList.add("img-link");
@@ -62,7 +62,7 @@ function getSampleData(url, order) {
 
         let report_link = document.createElement("button");
         report_link.id = "report-link";
-        report_link.innerHTML = "No Washover in Image";
+        report_link.innerHTML = "Tell us if there no washover in the image";
         report_link.style.cssText = `
           background-color: darkred;
           height: 50px;
