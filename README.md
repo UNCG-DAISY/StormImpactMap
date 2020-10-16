@@ -17,6 +17,7 @@
 
 - Jamison Valentine - Lead Software Developer
 - Evan Goldstein - Lead Scientist
+- Somya Mohanty - Oracle
 
 ## Data Sources
 
