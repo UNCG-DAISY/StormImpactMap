@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="../public/css/viewer.css">
 </head>
 <body>
-    <div id="parent" style="background-color: red;">
-        <div id="child1" class="c arrow" style="background-color: blue"><span>c1</span></div>
-        <div id="child2" class="c image" style="background-color: green;"><span>child 2</span></div>
-        <div id="child3" class="c arrow" style="background-color: orange;"><span>c3</span></div>
+    <div id="parent"">
+        <div id="child1" class="c arrow"><button onclick="prev_image()"><img src="../public/images/left_arrow.png" alt=""></button></div>
+        <div id="child2" class="c image"><img id="image" src="../public/images/test.png" alt=""></div>
+        <div id="child3" class="c arrow"><button onclick="next_image()"><img src="../public/images/right_arrow.png" alt=""></button></div>
     </div>
-    <div id="feedback">do you see washover?</div>
+    <div id="feedback"><button id="feedback-btn">do you see washover?</button></div>
+    <script src="../public/js/viewer.js"></script>
 </body>
 </html>
