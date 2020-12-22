@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <link rel="stylesheet" href="/css/viewer.css">
+</head>
+<body>
+    <script src="/js/src/util.js"></script>
+    <script src="/js/src/viewer-src-browser.js"></script>
+    <script>
+        var index = 0;
+        var images = load_images((data)=>{
+            images = data;
+            set_image(index);
+        });
+
+        console.log('images: ', images); 
+    </script>
+    <div id="parent">
+        <div id="child1" class="c arrow"><button onclick="prev_image()"><img src="/images/left_arrow.png" alt=""></button></div>
+        <div id="child2" class="c image"><img id="image" src="" alt=""></div>
+        <div id="child3" class="c arrow"><button onclick="next_image()"><img src="/images/right_arrow.png" alt=""></button></div>
+    </div>
+    <div id="feedback"><button id="feedback-btn" onclick="report()">do you see washover?</button></div>
+    <!-- <script>next_image()</script> -->
+    <!-- <script src="/js/src/viewer.js"></script> -->
+</body>
+</html>
