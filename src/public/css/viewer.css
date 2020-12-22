@@ -1,0 +1,19 @@
+html, body {
+    height: 100%;
+}
+
+#parent {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    height: 80%;
+}
+
+.c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#feedback {
+    text-align: center;
+}
