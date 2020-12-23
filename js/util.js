@@ -6,7 +6,7 @@ report_url = "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7O
 
 function load_images(callback) {
     var ids = []
-    url = "../data/HurricaneFlorenceSampleData.csv";
+    url = "data/HurricaneFlorenceSampleData.csv";
     let csv_data = "";
     fetch(url)
       .then((response) => response.text())
