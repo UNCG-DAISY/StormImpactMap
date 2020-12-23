@@ -19,11 +19,11 @@
         console.log('images: ', images); 
     </script>
     <div id="parent">
-        <div id="child1" class="c arrow"><button onclick="prev_image()"><img src="images/left_arrow.png" alt=""></button></div>
-        <div id="child2" class="c image"><img id="image" src="" alt=""></div>
-        <div id="child3" class="c arrow"><button onclick="next_image()"><img src="images/right_arrow.png" alt=""></button></div>
+        <div class="c arrow-container"><button class="arrow-btn" onclick="prev_image()"><img class="arrow" src="images/left_arrow.png" alt=""></button></div>
+        <div class="c image"><img id="image" src="" alt=""></div>
+        <div class="c arrow-container"><button class="arrow-btn" onclick="next_image()"><img class="arrow" src="images/right_arrow.png" alt=""></button></div>
     </div>
-    <div id="feedback"><button id="feedback-btn" onclick="report()">do you see washover?</button></div>
+    <div id="feedback"><button id="feedback-btn" onclick="report()">Tell us if there no washover in the image</button></div>
     <!-- <script>next_image()</script> -->
     <!-- <script src="/js/src/viewer.js"></script> -->
 </body>
