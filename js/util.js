@@ -1,15 +1,3 @@
-// var csv = require('csv-parser')
-// var fs = require('fs')
-
-// results = [];
-// function load_images() {
-//     fs.createReadStream("public/data/HurricaneFlorenceSampleData.csv").pipe(csv())
-//     .on('data', (data) => results.push(data['_id']))
-//     .on('end', () => {
-//         console.log(results[0]);
-//     });
-// }
-
 img_base_url = "https://coastalimagelabeler.science/api/image/";
 img_compressed = "/compressed";
 img_original = "/original";
@@ -36,7 +24,4 @@ function load_images(callback) {
         console.log('done')
     });
    ;
-   
 }
-
-// module.exports = load_images;
