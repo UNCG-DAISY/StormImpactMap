@@ -2,6 +2,15 @@
   //////////////////// ISAIAS ///////////////////////////////
   */
 
+tileLayers = []
+etu = { errorTileUrl: "../dorian/images/clear.png" }
+
+for (image of images) {
+  t = "https://storms.ngs.noaa.gov/storms/tileso/services/tileserver.php?/" + image + "-rgb.json"
+  u = L.mapbox.tileLayer(t, etu);
+  tileLayers.push(u);
+}
+
 const aug03a = new L.mapbox.tileLayer(
   "https://storms.ngs.noaa.gov/storms/tileso/services/tileserver.php?/20200803a-rgb.json",
   { errorTileUrl: "../isaias/images/clear.png" }
@@ -17,11 +26,20 @@ const aug05a = new L.mapbox.tileLayer(
 
 /*
   //////////////////// DORIAN ///////////////////////////////
-  */
+*/
+
+tileLayers = []
+etu = { errorTileUrl: "../dorian/images/clear.png" }
+
+for (image of images) {
+  t = "https://storms.ngs.noaa.gov/storms/tilesm/services/tileserver.php?/" + image + "-rgb.json"
+  u = L.mapbox.tileLayer(t, etu);
+  tileLayers.push(u);
+}
 
 var sep04a = new L.mapbox.tileLayer(
   "https://storms.ngs.noaa.gov/storms/tilesm/services/tileserver.php?/20190904a-rgb.json",
-  { errorTileUrl: "../dorian/images/clear.png" }
+  
 );
 var sep05a = new L.mapbox.tileLayer(
   "https://storms.ngs.noaa.gov/storms/tilesm/services/tileserver.php?/20190905a-rgb.json",
