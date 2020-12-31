@@ -1,51 +1,46 @@
-/*
-  //////////////////// ISAIAS ///////////////////////////////
-  */
+const fs = require('fs');
+const storm_dir = "public/data/storms/"
 
- tileLayers = []
- etu = { errorTileUrl: "../dorian/images/clear.png" }
- 
- for (image of images) {
-   t = "https://storms.ngs.noaa.gov/storms/tileso/services/tileserver.php?/" + image + "-rgb.json"
-   u = L.mapbox.tileLayer(t, etu);
-   tileLayers.push(u);
- }
-
- /*
-  //////////////////// DORIAN ///////////////////////////////
-*/
-
-tileLayers = []
-etu = { errorTileUrl: "../dorian/images/clear.png" }
-
-for (image of images) {
-  t = "https://storms.ngs.noaa.gov/storms/tilesm/services/tileserver.php?/" + image + "-rgb.json"
-  u = L.mapbox.tileLayer(t, etu);
-  tileLayers.push(u);
+function get_image_names(storm) {
+  // read the respective json object from file
+  let path = storm_dir + storm + "/images"
+  data = JSON.parse(fs.readFileSync(path))
+  return data.images
 }
 
-/*
-    //////////////////// MICHAEL ///////////////////////////////
-*/
+function load_storms() {
+storms = fs.readdirSync(storm_dir)
 
-tileLayers = []
-etu = { errorTileUrl: "../dorian/images/clear.png" }
+    let storm_list = {}
 
-for (image of images) {
-  t = "https://storms.ngs.noaa.gov/storms/tilesj/services/tileserver.php?/" + image + "-rgb.json"
-  u = L.mapbox.tileLayer(t, etu);
-  tileLayers.push(u);
+    for (let s of storms) {
+
+      if (s.includes("config")) continue
+      let path = storm_dir + s
+      let fe_path = "data/storms/" + s + "/"
+      var storm_obj = {}
+
+      let files = fs.readdirSync(path)
+          if (files) {
+            for (let f of files) {
+              if (f.includes("ext")) {
+                storm_obj['USGS Measured Overwash'] = fe_path + f
+              }
+              if (f.includes("pred")) {
+                storm_obj['USGS Predicted Overwash'] = fe_path + f
+              }        
+              if (f.includes("track")) {
+                storm_obj['NOAA Tracks'] = fe_path + f
+              }   
+              storm_obj['NOAA Images'] = get_image_names(s) 
+              // storm_obj['ML Predictions'] = fe_path + f                               
+
+          }
+          }
+      storm_list[s] = storm_obj
+    }
+      // console.log(storm_list)
+      return(storm_list)
 }
 
-/*
-//////////////////// FLORENCE ///////////////////////////////
-*/
-
-tileLayers = []
-etu = { errorTileUrl: "../dorian/images/clear.png" }
-
-for (image of images) {
-  t = "https://storms.ngs.noaa.gov/storms/tilesi/services/tileserver.php?/" + image + "-rgb.json"
-  u = L.mapbox.tileLayer(t, etu);
-  tileLayers.push(u);
-}
+exports.load_storms = load_storms

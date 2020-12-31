@@ -49,12 +49,7 @@
     <header id="header">
       <h3 id="title">UNCG DAISY Storm Impact Map</h3>
 
-      <select name="storms" id="storm-selector" onchange="changeStorm">
-        <option value="Isaias">Isaias</option>
-        <option value="Florence">Florence</option>
-        <option value="Dorian">Dorian</option>
-        <option value="Michael">Michael</option>
-      </select>
+      <select name="storms" id="storm-selector"></select>
     </header>
 
     <div id="about-modal" class="modal">
@@ -137,8 +132,8 @@
     <script
       type="text/javascript"
       src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script>
-    <script type="text/javascript" src="/js/shp.js"></script>
-    <script type="text/javascript" src="/js/leaflet.shpfile.js"></script>
+    <script type="text/javascript" src="/js/browser/shp.js"></script>
+    <script type="text/javascript" src="/js/browser/leaflet.shpfile.js"></script>
 
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script
@@ -149,11 +144,11 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"></script>
-    <script src="/js/storms.js"></script>
-    <script src="/js/shapefiles.js"></script>
-    <script src="/js/img-load.js"></script>
+      <script>
+        var storms = <%- JSON.stringify(storms) %>
+      </script>
     <script src="/js/popups.js"></script>
-    <script src="/js/change-storm.js"></script>
+    <script src="/js/browser/util.js"></script>
     <script src="/js/map.js"></script>
   </body>
 </html>
