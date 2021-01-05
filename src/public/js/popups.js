@@ -13,7 +13,7 @@ function postData(report_url, data = {}) {
     });
 }
 
-function getSampleData(url, order) {
+function load_ml_pred(url, order) {
   let csv_data = "";
   fetch(url)
     .then((response) => response.text())
@@ -95,10 +95,10 @@ function getSampleData(url, order) {
         layersControl = new L.Control.Layers(baseLayers, overlayLayers).addTo(
           map
         );
-        getSampleData("data/HurricaneFlorenceSampleData.csv", 2);
+        load_ml_pred("data/HurricaneFlorenceSampleData.csv", 2);
       } else if (order == 2) {
         fLayers["ML Predicted Overwash"] = markerGroup;
-        getSampleData("data/HurricaneMichaelSampleData.csv", 3);
+        load_ml_pred("data/HurricaneMichaelSampleData.csv", 3);
       } else {
         mLayers["ML Predicted Overwash"] = markerGroup;
       }

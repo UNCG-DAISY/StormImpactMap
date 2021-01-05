@@ -58,17 +58,23 @@ The code can be viewed as two different subsystems, the frontend (browser) and b
 ### Frontend
 
 - leaflet.js@0.6.4:
- some text some text some text some text some text some text some text some text some text 
+The library on which this application is based that enables interactive mapping features and functionality
+
 - leaflet.markercluster@1.4.1:  
-some text some text some text some text some text some text some text some text some text
+Marker clustering functionality which decreases the lag associated loading a large number of markers on the map at once.
+
 - shp.js: 
  some text some text some text some text some text some text some text some text some text
+
 - leaflet.shpfile.js:  
 some text some text some text some text some text some text some text some text some text
+
 - mapbox@1.4.1
  some text some text some text some text some text some text some text some text some text
+
 - popper.js@ 
 some text some text some text some text some text some text some text some text some text
+
 - tile.stamen.js 
 some text some text some text some text some text some text some text some text some text
 
@@ -91,14 +97,11 @@ some text some text some text some text some text some text some text some text 
 #### Routes
 
 Dependencies;
-There are 3 routes to consider
+There are only 2 routes to consider
 
 "/"
 
 "/viewer"
-
-"about"
-
 
 ## Database
 
