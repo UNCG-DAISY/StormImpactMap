@@ -111,4 +111,8 @@ There are only 2 routes to consider
 
 ## How to Build/Run on Local Machine
 
-- docker
+    - clone repo
+    - cd into repo
+    - sudo apt update
+    - sudo apt install nodejs npm
+    - npm start
