@@ -57,25 +57,27 @@ The code can be viewed as two different subsystems, the frontend (browser) and b
 
 ### Frontend
 
-- leaflet.js@0.6.4:
+All code and resources used in the browser are exposed via the "src/public/" directory as commonly used in Express. This 
+
+A short description of each library along with its use in this project:
+
+    - leaflet.js@0.6.4:
 The library on which this application is based that enables interactive mapping features and functionality
 
-- leaflet.markercluster@1.4.1:  
+    - leaflet.markercluster@1.4.1:  
 Marker clustering functionality which decreases the lag associated loading a large number of markers on the map at once.
 
-- shp.js: 
- some text some text some text some text some text some text some text some text some text
+    - leaflet.shpfile.js:  
+Create a leaflet Shapefile layer 
 
-- leaflet.shpfile.js:  
+    - shp.js (shapefile-js): 
+Required by leaflet.shpfile.js. Converts shapefiles to GeoJSON
+
+
+    - popper.js@ 
 some text some text some text some text some text some text some text some text some text
 
-- mapbox@1.4.1
- some text some text some text some text some text some text some text some text some text
-
-- popper.js@ 
-some text some text some text some text some text some text some text some text some text
-
-- tile.stamen.js 
+    - tile.stamen.js 
 some text some text some text some text some text some text some text some text some text
 
 
@@ -104,8 +106,6 @@ There are only 2 routes to consider
 "/viewer"
 
 ## Database
-
-
 
 ## New Additions and Modifications
 
