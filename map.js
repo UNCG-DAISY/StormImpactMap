@@ -1,5 +1,4 @@
-L.mapbox.accessToken =
-  "pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g";
+
 const center = L.latLng(35, -75.69);
 const initZoom = 6;
 const map = L.map("map", {
@@ -36,37 +35,24 @@ map.addControl(
   })
 );
 
-//overlay layers
-
-const fLayers = {
-  "NOAA Track": florence_track,
-  "NOAA Images": florence,
-  "USGS Predicted Overwash": florence_pred,
-  "USGS Measured Overwash": florence_wash,
-};
-
-const mLayers = {
-  "NOAA Track": michael_track,
-  "NOAA Images": michael,
-  "USGS Predicted Overwash": michael_pred,
-  "USGS Measured Overwash": michael_wash,
-};
-
-const iLayers = {
-  "NOAA Images": isaias,
-};
-
-const dLayers = {
-  "NOAA Track": dorian_track,
-  "NOAA Images": dorian,
-};
-
 const baseLayers = {
   "Toner-lite": toner_lite,
   Watercolor: watercolor,
   Terrain: terrain,
 };
 
-getSampleData("data/HurricaneIsaiasSampleData.csv", 1);
+async function main() {
+  let storms = await StormLoader.loadAllStorms()
+  Util.populateStormSelector(Object.keys(storms))
 
-$("#storm-selector").change(changeStorm);
+  let currentStormName = $("#storm-selector").val().toLowerCase()
+  let currentStorm = storms[currentStormName]
+
+  console.log("Current storm: ", currentStorm)
+  console.log("current storm overlays: ", currentStorm.overlays)
+  new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map)
+  $("#storm-selector").change(Util.changeStorm);
+  Util.setSidebarTransition()
+}
+
+main()
