@@ -4,22 +4,6 @@ class Storm {
         this.name = name
         this.resources = resources
         this.STORM_DIR_PATH = "./data/storms/" + name + "/"
-
-        this.init()
-        // for (const [resource, enabled] in Object.entries(resources)) {
-        //     if (resource == "ov_ext.zip") { 
-        //      this.overwashExtentLayer = this.loadShapefile(resource)  
-        //     }
-        //     if (resource == "ov_pred.zip") { 
-        //         this.overwashPredictionLayer = this.loadShapefile(resource)             
-        //     }                
-        //     if (resource == "ml_pred.zip") { 
-        //         this.MLPredictionLayer = this.loadShapefile(resource) 
-        //     }                
-        //     if (resource == "track.zip") { 
-        //         this.noaaTrackLayer = this.loadShapefile(resource) 
-        //     }
-        // }
     }
 
 
