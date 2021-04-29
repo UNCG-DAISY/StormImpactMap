@@ -41,17 +41,21 @@ const baseLayers = {
   Terrain: terrain,
 };
 
+let storms = {}
+let layersControl = {} 
+let currentStorm = {}
+
+
 async function main() {
-  let storms = await StormLoader.loadAllStorms()
+  storms = await StormLoader.loadAllStorms()
   Util.populateStormSelector(Object.keys(storms))
 
   let currentStormName = $("#storm-selector").val().toLowerCase()
-  let currentStorm = storms[currentStormName]
+  currentStorm = storms[currentStormName]
 
-  console.log("Current storm: ", currentStorm)
-  console.log("current storm overlays: ", currentStorm.overlays)
-  new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map)
-  $("#storm-selector").change(Util.changeStorm);
+  layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map)
+  $("#storm-selector").change({control: layersControl, overlays: currentStorm.overlays},Util.changeStorm);
+  $("#storm-selector").change(Util.test);
   Util.setSidebarTransition()
 }
 

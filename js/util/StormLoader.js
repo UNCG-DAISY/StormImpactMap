@@ -25,19 +25,6 @@ class StormLoader {
         return storms
     }
 
-    static changeStorm() {
-
-        if (layersControl) layersControl.remove()
-    
-        map.eachLayer((layer) => {
-        map.removeLayer(layer);
-        });
-    
-        map.addLayer(toner_lite);
-    
-        currentStorm = $("#storm-selector").val().toLowerCase();
-        layersControl = new L.Control.Layers(baseLayers, controls[currentStorm]).addTo(map);
-    }
 
     static async loadStorm(stormName) {
 

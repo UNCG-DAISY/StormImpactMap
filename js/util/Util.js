@@ -1,5 +1,33 @@
 class Util {
 
+
+  static img_base_url = "https://coastalimagelabeler.science/api/image/";
+  static img_compressed = "/compressed";
+  static img_original = "/original";
+  static img_grad = "/gradcam";
+  static report_url = "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec";
+
+static load_images(callback) {
+    var ids = []
+    url = "https://raw.githubusercontent.com/UNCG-DAISY/StormImpactMap/master/data/HurricaneFlorenceSampleData.csv";
+    let csv_data = "";
+    fetch(url)
+      .then((response) => response.text())
+      .then((text) => {
+        csv_data = text;
+        images = csv_data.split("\n");
+        images.shift();
+
+        images.forEach((element) => {
+            vals = element.split(",");
+            let id = vals[5];
+            ids.push(id);            
+        });  
+        callback(ids);
+        console.log('done')
+    });
+  }
+
     static populateStormSelector(stormNames) {
         for (let name of stormNames) {
             let displayName = name.charAt(0).toUpperCase() + name.slice(1)
@@ -7,9 +35,13 @@ class Util {
         }
     }
 
-    static changeStorm() {
+    static changeStorm(event) {
 
-        if (layersControl) layersControl.remove()
+        if (layersControl) {
+          console.log("attempting to remove.......")
+          console.log(layersControl)
+          layersControl.remove()
+        }
       
         map.eachLayer((layer) => {
           map.removeLayer(layer);
@@ -17,8 +49,9 @@ class Util {
       
         map.addLayer(toner_lite);
       
-        currentStorm = $("#storm-selector").val().toLowerCase();
-        layersControl = new L.Control.Layers(baseLayers, controls[currentStorm]).addTo(map);
+        let currentStormName = $("#storm-selector").val().toLowerCase();
+        let currentStorm = storms[currentStormName]
+        layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map);
       }
       
     static setSidebarTransition() {
