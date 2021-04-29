@@ -1,3 +1,10 @@
+/*
+
+  This is the main script that contains all variables and method calls for loading the Leaflet map 
+  as well the project specific global variables and most importantly, the main method which runs the application
+
+*/
+
 
 const center = L.latLng(35, -75.69);
 const initZoom = 6;
