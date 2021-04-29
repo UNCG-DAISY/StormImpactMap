@@ -14,7 +14,7 @@ class StormLoader {
     static async loadAllStorms() {
 
         let storms = {}
-        let res = await fetch("../../data/storms.json")
+        let res = await fetch("../../data/storms_config.json")
         let stormData = await res.json()
 
         for (const stormName in stormData) {
@@ -25,17 +25,30 @@ class StormLoader {
         return storms
     }
 
-
     static async loadStorm(stormName) {
-
         
         for (let file of Object.keys(this.FILE_TO_RESOURCE_MAP)) {
             let url = "data/storms/" + stormName + "/" + file;
-            console.log(file)
-
             let res = await fetch("none")
 
             if (!res.ok) console.log("no " + file + " found for (storm: " +stormName + ")........")
         }
     }
+    
+    static changeStorm(event) {
+
+        if (layersControl) {
+          layersControl.remove()
+        }
+      
+        map.eachLayer((layer) => {
+          map.removeLayer(layer);
+        });
+      
+        map.addLayer(toner_lite);
+      
+        let currentStormName = $("#storm-selector").val().toLowerCase();
+        let currentStorm = storms[currentStormName]
+        layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map);
+      }
 }

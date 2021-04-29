@@ -34,37 +34,24 @@ body {
   flex-direction: column;
   justify-content: center;
   color: white;
+  overflow: hidden;
 }
 
-#menu-icon {
-  display: block;
-  width: 35px;
-  background-color: darkblue;
-  position: fixed;
-  top: 20px;
-  left: 10px;
-}
 
 i {
   padding-right: 20px;
   width: 40px;
 }
-/* .hamburger {
-  width: 35px;
-  height: 5px;
-  background-color: white;
-  margin: 6px 0;
-} */
 
 .menu-item {
-    /* font:menu; */
+  width: 200px;
   padding: 10px 0 10px 25px;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 .menu-title {
-  display: none;
   padding: auto;
 }
 

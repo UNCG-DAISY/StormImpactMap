@@ -34,25 +34,6 @@ static load_images(callback) {
             $("#storm-selector").append(new Option(displayName, name))
         }
     }
-
-    static changeStorm(event) {
-
-        if (layersControl) {
-          console.log("attempting to remove.......")
-          console.log(layersControl)
-          layersControl.remove()
-        }
-      
-        map.eachLayer((layer) => {
-          map.removeLayer(layer);
-        });
-      
-        map.addLayer(toner_lite);
-      
-        let currentStormName = $("#storm-selector").val().toLowerCase();
-        let currentStorm = storms[currentStormName]
-        layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map);
-      }
       
     static setSidebarTransition() {
         let collapsed = true;

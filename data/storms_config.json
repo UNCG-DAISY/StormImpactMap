@@ -1,0 +1,32 @@
+{
+    "delta": {
+        "ov_ext.zip": false,
+        "ov_pred.zip": false,
+        "ml_pred.csv": false,
+        "noaa_tracks": false
+    },
+    "florence": {
+        "ov_ext.zip": false,
+        "ov_pred.zip": false,
+        "ml_pred.csv": false,
+        "noaa_tracks": false
+    },
+    "michael": {
+        "ov_ext.zip": false,
+        "ov_pred.zip": false,
+        "ml_pred.csv": false,
+        "noaa_tracks": false
+    },
+    "isaias": {
+        "ov_ext.zip": false,
+        "ov_pred.zip": false,
+        "ml_pred.csv": false,
+        "noaa_tracks": false
+    },
+    "zeta": {
+                "ov_ext.zip": false,
+                "ov_pred.zip": false,
+                "ml_pred.csv": false,
+                "noaa_tracks": false
+                }
+}

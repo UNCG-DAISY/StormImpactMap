@@ -4,6 +4,8 @@ const input = require('readline-sync')
 
 re = /([0-9]{8}[abc])/g
 
+const STORM_DATA_DIR = "./data/storms/"
+
  function get_storm_names(storm) {
     base = "https://storms.ngs.noaa.gov/storms/" + storm + "/";
     json_url = base + storm + ".json";
@@ -41,15 +43,6 @@ function get_src(url) {
             matches = new Set(data.match(re))
             console.log("matches found: ", matches)
             console.log(data);
-
-            // try {
-            //     server_id = data.match(/tiles([a-z])/)[1]
-            //     console.log(server_id);
-            // }
-            // catch (e) {
-            //     console.log(e)
-            // }
-
         
             for (x of matches) {
                 console.log(x);
@@ -67,8 +60,18 @@ function save_images(images) {
             obj = {
                 "images": images
             }
-            file = "./data/storms/" + storm + "/images.txt";
-            fs.writeFile(file, JSON.stringify(obj), (err) => console.log(err));
+            let newStormDir = STORM_DATA_DIR + storm + "/"
+           
+
+            if (!fs.existsSync(newStormDir)) {
+                fs.mkdirSync(newStormDir);
+            }
+
+            let newImageFile = newStormDir + "images.json"
+            console.log(newImageFile)
+            
+
+            fs.writeFileSync(newImageFile, JSON.stringify(obj), (err) => console.log(err));
             console.log('saved');
         }
         catch (e) {

@@ -1,5 +1,11 @@
 # Storm Impact Map
 
+## Adding a Storm
+- Clone project on local machine
+- Install dependencies (npm install)
+- Run "node admin.js"
+- 
+
 ## Dependencies
 
 - jQuery@3.5.1
@@ -9,7 +15,6 @@
 - leaflet.markercluster@1.4.1
 - shp.js
 - leaflet.shpfile.js
-- mapbox@1.4.1
 - popper.js@
 - tile.stamen.js
 

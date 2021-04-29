@@ -48,8 +48,14 @@ const baseLayers = {
   Terrain: terrain,
 };
 
+
+// This storm objects holds all relevant storm data loaded in as layers to be added on the map
+// when the respective storm is loaded
 let storms = {}
+
+// This variable is used to load the apporiate map control when changing storms
 let layersControl = {} 
+
 let currentStorm = {}
 
 
@@ -61,8 +67,7 @@ async function main() {
   currentStorm = storms[currentStormName]
 
   layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map)
-  $("#storm-selector").change({control: layersControl, overlays: currentStorm.overlays},Util.changeStorm);
-  $("#storm-selector").change(Util.test);
+  $("#storm-selector").change({control: layersControl, overlays: currentStorm.overlays},StormLoader.changeStorm);
   Util.setSidebarTransition()
 }
 

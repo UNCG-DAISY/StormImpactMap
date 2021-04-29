@@ -50,18 +50,16 @@
             </span>
         </button>
 
-      <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
       <div class="menu-item" data-toggle="modal" data-target="#about-modal">
         <i class="fas fa-question"></i>
-        <div class="menu-title" style="padding-left: 3px">About</div>
+        <span class="menu-title" style="padding-left: 3px">About</span>
       </div>
 
       <div class="menu-item" data-toggle="modal" data-target="#contact-modal">
         <i class="fas fa-envelope"></i>
-        <div class="menu-title">Contact</div>
+        <span class="menu-title">Contact</span>
       </div>
 
-      <!-- </div> -->
     </div>
 
     <header id="header">
@@ -130,27 +128,7 @@
     <div id="map"></div>
 
 
-<!-- expanding and collapsing menu  -->
 
-
-    <script>
-      let collapsed = true;
-      $(".hamburger").click(function () {
-        $('.hamburger').toggleClass("is-active");
-        if (collapsed) {
-          $("#sidenav").css("width", "200");
-          $("#sidenav").css("transition", "width .5s");
-          setTimeout(() => {
-            $(".menu-title").css("display", "inline");
-            collapsed = false;
-          }, 500);
-        } else {
-          $("#sidenav").css("width", "70");
-          $(".menu-title").css("display", "none");
-          collapsed = true;
-        }
-      });
-    </script>
     <script src="js/leaflet-1.0.3/leaflet.js"></script>
     <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
     <script
