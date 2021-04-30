@@ -50,26 +50,22 @@
             </span>
         </button>
 
-      <!-- <div class="menu-items" data-toggle="modal" data-target="#about-modal"> -->
       <div class="menu-item" data-toggle="modal" data-target="#about-modal">
         <i class="fas fa-question"></i>
-        <div class="menu-title" style="padding-left: 3px">About</div>
+        <span class="menu-title" style="padding-left: 3px">About</span>
       </div>
 
       <div class="menu-item" data-toggle="modal" data-target="#contact-modal">
         <i class="fas fa-envelope"></i>
-        <div class="menu-title">Contact</div>
+        <span class="menu-title">Contact</span>
       </div>
 
-      <!-- </div> -->
     </div>
 
     <header id="header">
       <h3 id="title">UNCG DAISY Storm Impact Map</h3>
 
-      <select name="storms" id="storm-selector" onchange="changeStorm">
-
-      </select>
+      <select name="storms" id="storm-selector" ></select>
     </header>
 
     <div id="about-modal" class="modal fade">
@@ -130,27 +126,7 @@
     <div id="map"></div>
 
 
-<!-- expanding and collapsing menu  -->
 
-
-    <script>
-      let collapsed = true;
-      $(".hamburger").click(function () {
-        $('.hamburger').toggleClass("is-active");
-        if (collapsed) {
-          $("#sidenav").css("width", "200");
-          $("#sidenav").css("transition", "width .5s");
-          setTimeout(() => {
-            $(".menu-title").css("display", "inline");
-            collapsed = false;
-          }, 500);
-        } else {
-          $("#sidenav").css("width", "70");
-          $(".menu-title").css("display", "none");
-          collapsed = true;
-        }
-      });
-    </script>
     <script src="js/leaflet-1.0.3/leaflet.js"></script>
     <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
     <script
@@ -171,14 +147,10 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"></script>
-    <script src="js/models/storm.js"></script>
+    <script src="js/models/Storm.js"></script>
     <script src="js/util/Util.js"></script>
-    <script src="js/util/StormLoader.js"></script>
-    
-    <script src="js/shapefiles.js"></script>
+
     <script src="js/img-load.js"></script>
-    <script src="js/popups.js"></script>
-    <script src="js/change-storm.js"></script>
     <script src="map.js"></script>
   </body>
 </html>

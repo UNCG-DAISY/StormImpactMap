@@ -1,5 +1,11 @@
-L.mapbox.accessToken =
-  "pk.eyJ1IjoiamFtaXNvbnZhbGVudGluZSIsImEiOiJja2Vhbjd4ZzIwMGlpMnluaTl1ajE4Z3BkIn0.fJ6GnIsL0xMb4PpXw6LI7g";
+/*
+
+  This is the main script that contains all variables and method calls for loading the Leaflet map 
+  as well the project specific global variables and most importantly, the main method which runs the application
+
+*/
+
+
 const center = L.latLng(35, -75.69);
 const initZoom = 6;
 const map = L.map("map", {
@@ -36,38 +42,35 @@ map.addControl(
   })
 );
 
-//overlay layers
-
-const fLayers = {
-  "NOAA Track": florence_track,
-  "NOAA Images": florence,
-  "USGS Predicted Overwash": florence_pred,
-  "USGS Measured Overwash": florence_wash,
-};
-
-const mLayers = {
-  "NOAA Track": michael_track,
-  "NOAA Images": michael,
-  "USGS Predicted Overwash": michael_pred,
-  "USGS Measured Overwash": michael_wash,
-};
-
-const iLayers = {
-  "NOAA Track": isaias_track,
-  "NOAA Images": isaias,
-};
-
-const dLayers = {
-  "NOAA Track": dorian_track,
-  "NOAA Images": dorian,
-};
-
 const baseLayers = {
   "Toner-lite": toner_lite,
   Watercolor: watercolor,
   Terrain: terrain,
 };
 
-getSampleData("data/HurricaneIsaiasSampleData.csv", 1);
 
-$("#storm-selector").change(changeStorm);
+
+// This storm objects holds all relevant storm data loaded in as layers to be added on the map
+// when the respective storm is loaded
+let storms = {}
+
+// This variable is used to load the apporiate map control when changing storms
+let layersControl = {} 
+
+let currentStorm = {}
+
+
+async function main() {
+
+  storms = await Util.loadAllStorms()  
+  Util.populateStormSelector(Object.keys(storms))
+
+  let currentStormName = $("#storm-selector").val().toLowerCase()
+  currentStorm = storms[currentStormName]
+
+  layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map)
+  $("#storm-selector").change({control: layersControl, overlays: currentStorm.overlays}, Util.changeStorm);
+  Util.setSidebarTransition()
+}
+
+main()
