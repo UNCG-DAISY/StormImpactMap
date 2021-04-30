@@ -5,8 +5,7 @@ class Storm {
         this.resources = resources
         this.STORM_DIR_PATH = "./data/storms/" + name + "/"
     }
-
-
+    
     async init() {
 
         this.noaaImageLayer = await this.loadTileImages()
