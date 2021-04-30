@@ -38,7 +38,7 @@ static load_images() {
 
   static async loadAllStorms() {
     let storms = {}
-    let res = await fetch("../../data/storms_config.json")
+    let res = await fetch("/data/storms_config.json")
     let stormData = await res.json()
   
     for (const stormName in stormData) {

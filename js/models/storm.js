@@ -16,7 +16,6 @@ class Storm {
         }
         if (this.resources["ov_pred.zip"] ) {
             this.overwashPredictionLayer = this.loadShapefile(this.STORM_DIR_PATH + "ov_pred.zip")  
-            console.log('ov pred layer:', this.overwashPredictionLayer) 
         }
         if (this.resources["ml_pred.csv"] ) {
             // Util.load_images(this.STORM_DIR_PATH + "ml_pred.csv")
@@ -67,7 +66,6 @@ class Storm {
       getOverlayLayers() {
         let overlayLayers = {}
         overlayLayers["NOAA Images"] = this.noaaImageLayer
-        console.log(this.overwashPredictionLayer)
         if (this.overwashExtentLayer) {
             overlayLayers["USGS Measured Overwash"] = this.overwashExtentLayer
         }
@@ -81,7 +79,6 @@ class Storm {
             overlayLayers["NOAA Tracks"] = this.noaaTrackLayer
         }
         
-        console.log(overlayLayers)
         return overlayLayers
       }
 }
