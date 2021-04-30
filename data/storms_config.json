@@ -1,11 +1,11 @@
 {
-    "dorian": {
-        "ov_ext.zip": false,
-        "ov_pred.zip": false,
-        "ml_pred.csv": false,
-        "noaa_tracks": false
-    },
     "florence": {
+        "ov_ext.zip": true,
+        "ov_pred.zip": true,
+        "ml_pred.csv": true,
+        "noaa_tracks": true
+    },
+    "dorian": {
         "ov_ext.zip": false,
         "ov_pred.zip": false,
         "ml_pred.csv": false,
@@ -21,12 +21,6 @@
         "ov_ext.zip": false,
         "ov_pred.zip": false,
         "ml_pred.csv": false,
-        "noaa_tracks": false
-    },
-    "zeta": {
-                "ov_ext.zip": false,
-                "ov_pred.zip": false,
-                "ml_pred.csv": false,
-                "noaa_tracks": false
-                }
+        "noaa_tracks": true
+    }
 }

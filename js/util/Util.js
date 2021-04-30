@@ -1,15 +1,21 @@
 class Util {
 
-
   static img_base_url = "https://coastalimagelabeler.science/api/image/";
   static img_compressed = "/compressed";
   static img_original = "/original";
   static img_grad = "/gradcam";
-  static report_url = "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec";
+  static REPORT_URL = "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec";
 
-static load_images(callback) {
-    var ids = []
-    url = "https://raw.githubusercontent.com/UNCG-DAISY/StormImpactMap/master/data/HurricaneFlorenceSampleData.csv";
+  static generate_url(id, img_type) {
+    if (img_type == "compressed") {
+        return this.IMG_BASE_URL + id + this.IMG_COMPRESSED;
+    }
+    else return this.IMG_BASE_URL + id + this.IMG_GRAD;
+}
+
+static load_images() {
+    let ids = []
+    let url = "https://raw.githubusercontent.com/UNCG-DAISY/StormImpactMap/master/data/HurricaneFlorenceSampleData.csv";
     let csv_data = "";
     fetch(url)
       .then((response) => response.text())
@@ -23,11 +29,42 @@ static load_images(callback) {
             let id = vals[5];
             ids.push(id);            
         });  
-        callback(ids);
+        // callback(ids);
+        console.log(ids)
+        
         console.log('done')
     });
   }
 
+  static async loadAllStorms() {
+    let storms = {}
+    let res = await fetch("../../data/storms_config.json")
+    let stormData = await res.json()
+  
+    for (const stormName in stormData) {
+        let storm = await (new Storm(stormName, stormData[stormName])).init()
+        storms[stormName] = storm
+    }
+    return storms
+  }
+
+  static changeStorm(event) {
+
+    if (layersControl) {
+      layersControl.remove()
+    }
+  
+    map.eachLayer((layer) => {
+      map.removeLayer(layer);
+    });
+  
+    map.addLayer(toner_lite);
+  
+    let currentStormName = $("#storm-selector").val().toLowerCase();
+    let currentStorm = storms[currentStormName]
+    console.log(currentStorm.overlays)
+    layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map);
+  }
     static populateStormSelector(stormNames) {
         for (let name of stormNames) {
             let displayName = name.charAt(0).toUpperCase() + name.slice(1)
@@ -68,11 +105,31 @@ static load_images(callback) {
             return { color: "#ffd840" };
         }
       }
+
+      static appendSheet(report_url) {
+        fetch(report_url) // Call the fetch function passing the url of the API as a parameter
+          .then((response) => response.json())
+          .then(function (data) {
+            // This is where you run code if the server returns any errors
+            // console.log(data);
+          });
+    }
+    
+    /*
+      sends a GET request to the main backend endpoint w/ required parameters
+    */
+    
+    static async appendFile(params) {
+      let url = "/feedback" + params
+      const res = await fetch(url)
+      data = await res.text()
+      alert(data)
+    }
       
       static createPopupLink(id, img_type, text) {
         let newlink = document.createElement('a');
         newlink.classList.add("img-link");
-        newlink.href = CIL_API_Driver.generate_url(id, img_type)
+        newlink.href = this.generate_url(id, img_type)
         newlink.style.display = "block";
         newlink.target = "_blank";
         newlink.text = text;
@@ -95,14 +152,15 @@ static load_images(callback) {
             font-color: white;
             color: white;
         `;
-        report_button.href = CIL_API_Driver.REPORT_URL + params;
+        report_button.href = this.REPORT_URL + params;
       
         report_button.addEventListener("click", () => {
           let result = confirm("Are you sure you want to report no washover?")
           
           if (result) {
-            appendSheet(report_button.href);
-            appendFile(params)
+            console.log(report_button.href)
+            this.appendSheet(report_button.href);
+            this.appendFile(params)
           }
         });  
         return report_button
@@ -133,9 +191,9 @@ static load_images(callback) {
             date +
             "\n Washover Probability: " + (wash_pred != null ? wash_pred.substring(0, 4) : "");
       
-          let popupLink = create_popup_link(id, "compressed", "View Image")
-          let ML_link = create_popup_link(id, "grad", "View ML Results")
-          let report_button = create_popup_button(params)
+          let popupLink = this.createPopupLink(id, "compressed", "View Image")
+          let ML_link = this.createPopupLink(id, "grad", "View ML Results")
+          let report_button = this.createPopupButton(params)
       
           const marker = L.marker([lat, lon]).bindPopup(popupContent);
           popupContent.appendChild(popupLink);

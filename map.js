@@ -49,6 +49,7 @@ const baseLayers = {
 };
 
 
+
 // This storm objects holds all relevant storm data loaded in as layers to be added on the map
 // when the respective storm is loaded
 let storms = {}
@@ -60,14 +61,15 @@ let currentStorm = {}
 
 
 async function main() {
-  storms = await StormLoader.loadAllStorms()
+
+  storms = await Util.loadAllStorms()  
   Util.populateStormSelector(Object.keys(storms))
 
   let currentStormName = $("#storm-selector").val().toLowerCase()
   currentStorm = storms[currentStormName]
 
   layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map)
-  $("#storm-selector").change({control: layersControl, overlays: currentStorm.overlays},StormLoader.changeStorm);
+  $("#storm-selector").change({control: layersControl, overlays: currentStorm.overlays}, Util.changeStorm);
   Util.setSidebarTransition()
 }
 

@@ -8,18 +8,19 @@ class Storm {
 
 
     async init() {
-        
-        this.test = "test"
+
         this.noaaImageLayer = await this.loadTileImages()
 
         if (this.resources["ov_ext.zip"] ) {
             this.overwashExtentLayer = this.loadShapefile(this.STORM_DIR_PATH + "ov_ext.zip")
         }
         if (this.resources["ov_pred.zip"] ) {
-            this.overwashPredictionLayer = this.loadShapefile(this.STORM_DIR_PATH + "ov_pred.zip")   
+            this.overwashPredictionLayer = this.loadShapefile(this.STORM_DIR_PATH + "ov_pred.zip")  
+            console.log('ov pred layer:', this.overwashPredictionLayer) 
         }
-        if (this.resources["ml_pred.zip"] ) {
-            this.MLPredictionLayer = this.loadShapefile(this.STORM_DIR_PATH + "ml_pred.zip") 
+        if (this.resources["ml_pred.csv"] ) {
+            // Util.load_images(this.STORM_DIR_PATH + "ml_pred.csv")
+            this.MLPredictionLayer = await this.loadMLPredictions(this.STORM_DIR_PATH + "ml_pred.csv")
         }
         if (this.resources["track.zip"] ) {
             this.noaaTrackLayer = this.loadShapefile(this.STORM_DIR_PATH + "track.zip") 
@@ -28,7 +29,6 @@ class Storm {
         this.overlays = this.getOverlayLayers()
         return this
     }
-
 
     async loadTileImages() {
         let res = await fetch(this.STORM_DIR_PATH + "images.json")
@@ -46,33 +46,42 @@ class Storm {
 
     loadShapefile(path) {
         let layer = new L.Shapefile(path, {
-        style: (path.includes('ov_pred') ? assignColor : null),
+        style: (path.includes('ov_pred') ? Util.assignColor : null),
         });
         return layer
     }
 
-    async loadMLPredictions() {
-        let res = await fetch(this.STORM_DIR_PATH + "ml_pred.csv")
-        let rows = await res.text()
-        markers = rows.split("\n");
-        markers.shift();
+    async loadMLPredictions(path) {
+        let res = await fetch(path)
+        let content = await res.text()
+        let rows = content.split("\n");
+        rows.shift();
         let markerGroup = L.markerClusterGroup();
-        markers.forEach((element) => {
-        marker = create_marker(element)
+        rows.forEach((element) => {
+        let marker = Util.createMarker(element)
         if (marker) markerGroup.addLayer(marker);
         })
-        return MarkerGroup
+        return markerGroup
       }
-
 
       getOverlayLayers() {
         let overlayLayers = {}
         overlayLayers["NOAA Images"] = this.noaaImageLayer
-        if (this.overwashExtentLayer) overlayLayers["USGS Measured Overwash"] = this.overwashExtentLayer
-        if (this.overwashExtentLayer) overlayLayers["USGS Predicted Overwash"] = this.overwashPredictionLayer
-        if (this.overwashExtentLayer) overlayLayers["ML Predictions"] = this.MLPredictionLayer
-        if (this.overwashExtentLayer) overlayLayers["NOAA Tracks"] = this.noaaTrackLayerLayer
+        console.log(this.overwashPredictionLayer)
+        if (this.overwashExtentLayer) {
+            overlayLayers["USGS Measured Overwash"] = this.overwashExtentLayer
+        }
+        if (this.overwashPredictionLayer) {
+            overlayLayers["USGS Predicted Overwash"] = this.overwashPredictionLayer
+        }
+        if (this.MLPredictionLayer) {
+            overlayLayers["ML Predictions"] = this.MLPredictionLayer
+        }
+        if (this.noaaTrackLayer) {
+            overlayLayers["NOAA Tracks"] = this.noaaTrackLayer
+        }
         
+        console.log(overlayLayers)
         return overlayLayers
       }
 }
