@@ -203,4 +203,8 @@ static load_images() {
         }
       }    
 
+      static showTestPopup() {
+        let testPred = "florence,20180917a_jpgs,P26058176.jpg,2018/09/17,0.89670765,5f78bf25e9354f924b0fa2cc,34.75830955599048,-76.41214534570817"
+        this.createMarker(testPred).addTo(map);
+      }
 }
