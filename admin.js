@@ -87,16 +87,17 @@ function updateMapContents() {
     // new storms config object
     let stormConfig = {}
 
-    let resourceObj = {
-        "ov_ext.zip": false,
-        "ov_pred.zip": false,
-        "ml_pred.csv": false,
-        "track.zip": false
-    }
+
 
     let storms = fs.readdirSync(STORM_DATA_DIR)
 
     storms.forEach( (storm) => {
+        let resourceObj = {
+            "ov_ext.zip": false,
+            "ov_pred.zip": false,
+            "ml_pred.csv": false,
+            "track.zip": false
+        }
         let resourceList = fs.readdirSync(STORM_DATA_DIR + storm + "/")
         resourceList.forEach((resource) => { 
 
