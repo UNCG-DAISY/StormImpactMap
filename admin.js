@@ -6,22 +6,22 @@ re = /([0-9]{8}[abc])/g
 
 const STORM_DATA_DIR = "./data/storms/"
 
- function get_storm_names(storm) {
+ function getStormNames(storm) {
     base = "https://storms.ngs.noaa.gov/storms/" + storm + "/";
     json_url = base + storm + ".json";
     src_url = base + "js/app.js";
 
-    get_json(json_url)
+    getJSON(json_url)
     .catch((err) => {
         console.log("Unavailable in JSON format");
-        get_src(src_url)
+        getSrc(src_url)
         .catch( (err) => {
             console.log('Unable to find images for given storm');
         })
     })
 }
 
-function get_json(url) {
+function getJSON(url) {
     console.log("attempting to get json........")
     return axios.get(url)
         .then(function (res) {
@@ -35,7 +35,7 @@ function get_json(url) {
         });
     }
 
-function get_src(url) {
+function getSrc(url) {
     console.log("attempting to get source code........")
     return axios.get(url)
         .then(function (res) {
@@ -49,11 +49,11 @@ function get_src(url) {
             }
 
             matchesArray = Array.from(matches)
-            save_images(matchesArray);
+            saveImages(matchesArray);
         });
     }
 
-function save_images(images) {
+function saveImages(images) {
     ex = input.question('export to file?: ');
     if (ex === 'yes' || ex ==='y') {
         try {
@@ -82,6 +82,43 @@ function save_images(images) {
     }
 }
 
+function updateMapContents() {
 
-storm = input.question("enter storm name: ");
-get_storm_names(storm);
+    // new storms config object
+    let stormConfig = {}
+
+    let resourceObj = {
+        "ov_ext.zip": false,
+        "ov_pred.zip": false,
+        "ml_pred.csv": false,
+        "track.zip": false
+    }
+
+    let storms = fs.readdirSync(STORM_DATA_DIR)
+
+    storms.forEach( (storm) => {
+        let resourceList = fs.readdirSync(STORM_DATA_DIR + storm + "/")
+        resourceList.forEach((resource) => { 
+
+            if (Object.keys(resourceObj).includes(resource))
+            resourceObj[resource] = true;
+        })
+        console.log(resourceObj)
+        stormConfig[storm] = resourceObj
+    })
+
+    fs.writeFileSync("./data/storms_config.json", JSON.stringify(stormConfig, null, 2));
+}
+
+
+let userResponse = input.question("add or update: ");
+
+if (userResponse === 'add') {
+    let storm = input.question("enter storm to add: ")
+    getStormNames(storm);
+}
+
+if (userResponse === "update") {
+    updateMapContents();
+}
+
