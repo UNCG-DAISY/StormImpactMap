@@ -1,8 +1,8 @@
 {
   "dorian": {
-    "ov_ext.zip": true,
-    "ov_pred.zip": true,
-    "ml_pred.csv": true,
+    "ov_ext.zip": false,
+    "ov_pred.zip": false,
+    "ml_pred.csv": false,
     "track.zip": true
   },
   "florence": {
@@ -12,8 +12,8 @@
     "track.zip": true
   },
   "isaias": {
-    "ov_ext.zip": true,
-    "ov_pred.zip": true,
+    "ov_ext.zip": false,
+    "ov_pred.zip": false,
     "ml_pred.csv": true,
     "track.zip": true
   },
@@ -24,9 +24,9 @@
     "track.zip": true
   },
   "zeta": {
-    "ov_ext.zip": true,
-    "ov_pred.zip": true,
-    "ml_pred.csv": true,
-    "track.zip": true
+    "ov_ext.zip": false,
+    "ov_pred.zip": false,
+    "ml_pred.csv": false,
+    "track.zip": false
   }
 }
