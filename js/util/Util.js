@@ -62,7 +62,6 @@ static load_images() {
   
     let currentStormName = $("#storm-selector").val().toLowerCase();
     let currentStorm = storms[currentStormName]
-    console.log(currentStorm.overlays)
     layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map);
   }
     static populateStormSelector(stormNames) {
