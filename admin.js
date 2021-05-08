@@ -4,7 +4,7 @@ const input = require('readline-sync')
 
 re = /([0-9]{8}[abc])/g
 
-const STORM_DATA_DIR = "../../data/storms/"
+const STORM_DATA_DIR = "./data/storms/"
 
  function getStormNames(storm) {
     base = "https://storms.ngs.noaa.gov/storms/" + storm + "/";
