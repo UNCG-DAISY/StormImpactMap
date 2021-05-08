@@ -1,12 +1,13 @@
 class Util {
 
-  static img_base_url = "https://coastalimagelabeler.science/api/image/";
-  static img_compressed = "/compressed";
-  static img_original = "/original";
-  static img_grad = "/gradcam";
-  static REPORT_URL = "https://script.google.com/macros/s/AKfycbz8g3rBKzM3YD345fwKHj2do7OFBEcOPWZhqt2J5LgaNg11tHwT/exec";
+  static IMG_BASE_URL = "https://coastalimagelabeler.science/api/image/";
+  static IMG_COMPRESSED = "/compressed";
+  static IMG_ORIGINAL = "/original";
+  static IMG_GRAD = "/gradcam";
+  static REPORT_URL = "https://script.google.com/macros/s/AKfycbxGd87EVp-0F5VlIXigg7qpYqmVThxpMmBlbrnLbLnS5hq968YCKahcSmXFiT3zPDYiHA/exec";
 
-  static generate_url(id, img_type) {
+
+  static generateURL(id, img_type) {
     if (img_type == "compressed") {
         return this.IMG_BASE_URL + id + this.IMG_COMPRESSED;
     }
@@ -31,9 +32,7 @@ static load_images() {
         });  
         // callback(ids);
         console.log(ids)
-        
-        console.log('done')
-    });
+        });
   }
 
   static async loadAllStorms() {
@@ -62,7 +61,6 @@ static load_images() {
   
     let currentStormName = $("#storm-selector").val().toLowerCase();
     let currentStorm = storms[currentStormName]
-    console.log(currentStorm.overlays)
     layersControl = new L.Control.Layers(baseLayers, currentStorm.overlays).addTo(map);
   }
     static populateStormSelector(stormNames) {
@@ -122,14 +120,15 @@ static load_images() {
     static async appendFile(params) {
       let url = "/feedback" + params
       const res = await fetch(url)
-      data = await res.text()
-      alert(data)
+      console.log(res)
+      let data = await res.text()
+      console.log(data)
     }
       
       static createPopupLink(id, img_type, text) {
         let newlink = document.createElement('a');
         newlink.classList.add("img-link");
-        newlink.href = this.generate_url(id, img_type)
+        newlink.href = this.generateURL(id, img_type)
         newlink.style.display = "block";
         newlink.target = "_blank";
         newlink.text = text;
