@@ -1,10 +1,37 @@
 # Storm Impact Map
 
+## Project Structure
+
+### Important Directories:
+
+- bin: for locally hosted external dependencies
+- data: holds storm resources
+- src: project-specific css and js files
+
+### Important Files:
+
+- admin.js: for adding storms (gathering noaa tiles and creating new storm directory) and updating map contents to reflect root storm directory changes)
+- index.html
+- map.js: The main script which contains code for initializing the map
+- Storm.js: Object used for loading storm layers
+- Util.js: all other custom functions used 
+- storm_config.json: File used to specific map storm contents (order in which they appear in the storm selector and which resources to enable for each storm)
+
 ## Adding a Storm
 - Clone project on local machine
 - Install dependencies (npm install)
+- Run "node admin.js" at command line
+- Enter "add" at prompt to gather NOAA tile images and create new storm directory
+- Add other resources to new storm directory according to file naming convention below
 - Run "node admin.js"
-- 
+- Enter "update" to add new resource layers to the map
+
+## Removing a storm
+
+- To remove from map only (temporary), delete storm entry from storms_config.json and update storm contents using admin script
+elete storm dir
+- To remove from the project entirely, delete given storm directory and update contents using admin script
+
 
 ## Dependencies
 
