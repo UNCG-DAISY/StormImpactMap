@@ -12,10 +12,10 @@
 
 - admin.js: for adding storms (gathering noaa tiles and creating new storm directory) and updating map contents to reflect root storm directory changes)
 - index.html
-- map.js: The main script which contains code for initializing the map
-- Storm.js: Object used for loading storm layers
-- Util.js: all other custom functions used 
-- storm_config.json: File used to specific map storm contents (order in which they appear in the storm selector and which resources to enable for each storm)
+- src/js/map.js: The main script which contains code for initializing the map
+- src/js/Storm.js: Object used for loading storm layers
+- src/js/Util.js: all other custom functions used 
+- storm_config.json: File used to specify/configure map storm contents (order in which they appear in the storm selector and which resources to enable for each storm)
 
 ## Adding a Storm
 - Clone project on local machine
@@ -29,7 +29,7 @@
 ## Removing a storm
 
 - To remove from map only (temporary), delete storm entry from storms_config.json and update storm contents using admin script
-elete storm dir
+delete storm directory
 - To remove from the project entirely, delete given storm directory and update contents using admin script
 
 ## File Naming Convention
