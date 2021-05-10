@@ -34,10 +34,10 @@ delete storm directory
 
 ## File Naming Convention
 
-- [USGS overwash predictions]: "ov_pred.zip"
-- [USGS overwash observations]: "ov_ext.zip"
-- [NOAA NHC Hurricane Tracks]: "track.zip"
-- [ML observations of washover]: "ml_pred.csv"
+- USGS overwash predictions: "ov_pred.zip"
+- USGS overwash observations: "ov_ext.zip"
+- NOAA NHC Hurricane Tracks: "track.zip"
+- ML observations of washover: "ml_pred.csv"
 
 
 ## Dependencies
