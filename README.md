@@ -15,7 +15,7 @@
 - map.js: The main script which contains code for initializing the map
 - Storm.js: Object used for loading storm layers
 - Util.js: all other custom functions used 
-- storm_config.json: File used to specific map storm contents (order in which they appear in the storm selector and which resources to enable for each storm)
+- storm_config.json: File used to specify/configure map storm contents (order in which they appear in the storm selector and which resources to enable for each storm)
 
 ## Adding a Storm
 - Clone project on local machine
