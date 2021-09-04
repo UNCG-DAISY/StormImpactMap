@@ -32,7 +32,7 @@
   "ida": {
     "ov_ext.zip": false,
     "ov_pred.zip": false,
-    "ml_pred.csv": false,
+    "ml_pred.csv": true,
     "track.zip": false
   }
 }
