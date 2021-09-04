@@ -28,5 +28,11 @@
     "ov_pred.zip": false,
     "ml_pred.csv": false,
     "track.zip": false
+  },
+  "ida": {
+    "ov_ext.zip": false,
+    "ov_pred.zip": false,
+    "ml_pred.csv": false,
+    "track.zip": false
   }
 }
