@@ -176,7 +176,7 @@ static load_images() {
         let lat = vals[6];
         let lon = vals[7];
       
-        if (wash_pred > 0.75) {
+        if (wash_pred > 0.5) {
       
           const params = "?storm_id=" + storm_id + "&archive=" + archive + "&image=" + image + "&id=" + id + "&wash_pred=" + wash_pred;
       
