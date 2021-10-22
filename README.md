@@ -1,5 +1,7 @@
 # Storm Impact Map
 
+This repository is the code for a website displaying NOAA post-storm imagery, USGS information on storm impacts, and ML based prediction of where washover occured.
+
 ## Project Structure
 
 ### Important Directories:
